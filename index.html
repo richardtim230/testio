@@ -415,6 +415,216 @@ ul li {
 
 /* Mini Browser Container */
 
+
+.mini-browser-container {
+
+  top: 10px;
+  position: fixed;
+
+  bottom: 80px;
+
+  right: 10px;
+
+  width: 300px;
+
+  height: 500px;
+
+  background: white;
+
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.toggle-icon {
+
+  position: fixed;
+
+  bottom: 20px;
+
+  right: 20px;
+
+  background-color: #007bff;
+
+  color: white;
+
+  width: 50px;
+
+  height: 50px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+.browser {
+
+  position: fixed;
+
+  bottom: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 70%;
+
+  background: white;
+
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+
+  transform: translateY(100%);
+
+  transition: transform 0.3s ease;
+
+}
+
+
+
+.browser.active {
+
+  transform: translateY(0);
+
+}
+
+
+
+.search-bar {
+
+  display: flex;
+
+  padding: 10px;
+
+  background: #f7f7f7;
+
+  border-bottom: 1px solid #ddd;
+
+}
+
+
+
+.search-bar input {
+
+  flex: 1;
+
+  padding: 10px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 4px;
+
+  font-size: 16px;
+
+}
+
+
+
+.search-bar button {
+
+  margin-left: 10px;
+
+  padding: 10px 20px;
+
+  background-color: #007bff;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+}
+
+
+
+.search-bar button:hover {
+
+  background-color: #0056b3;
+
+}
+
+
+
+iframe {
+
+  width: 100%;
+
+  height: calc(100% - 90px);
+
+  border: none;
+
+}
+
+
+
+.toolbar {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 10px;
+
+  background: #f7f7f7;
+
+  border-top: 1px solid #ddd;
+
+  top: 0;
+
+  border-bottom: 1px solid #ddd;
+
+}
+
+
+
+.toolbar button {
+
+  padding: 10px 15px;
+
+  background-color: #007bff;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+}
+
+
+
+.toolbar button:hover {
+
+  background-color: #0056b3;
+
+}
+
+
+
+.toolbar .close-button {
+
+  background: #ff5c5c;
+
+  color: white;
+
+  }
 #mini-browser {
   top: 10px;
   position: fixed;
@@ -567,37 +777,54 @@ ul li {
       </div>
     </div>
     
-  <!-- Chat Icon -->
+  <div class="mini-browser-container">
 
-  <div id="chat-icon" onclick="toggleBrowser()"> 📚 </div>
+    <!-- Toggle Button -->
 
+    <div class="toggle-icon" id="toggleIcon" onclick="toggleBrowser()">🌐</div>
 
+    
 
-  <!-- Mini Browser -->
+    <!-- Browser -->
 
-  <div id="mini-browser">
+    <div class="browser" id="browser">
 
-    <div id="browser-header">
+    <!-- Toolbar -->
 
-      <input 
+      <div class="toolbar">
 
-        type="text" 
+        <button onclick="refreshPage()">Refresh</button>
 
-        id="https://en.wikipedia.org" 
+        <button onclick="goHome()">Home</button>
 
-        placeholder="Enter Academic URL..."
+        <button onclick="showHistory()">History</button>
 
-        value="https://en.wikipedia.org/wiki/Artificial_intelligence">
+        <button onclick="goToLast()">Last</button>
 
-      <button onclick="loadURL()">Go</button>
+        <button class="close-button" onclick="closeBrowser()">Close</button>
 
-      <button onclick="goHome()">Home</button>
+      </div>
+
+      <!-- Search Bar -->
+
+      <div class="search-bar">
+
+        <input type="text" id="searchInput" placeholder="Search or type URL..." />
+
+        <button onclick="goToUrl()">Go</button>
+
+      </div>    
+
+      <!-- Webview -->
+
+      <iframe id="webview" src="https://en.wikipedia.org" frameborder="0"></iframe>
 
     </div>
 
-    <iframe id="browser-frame" src="https://corsproxy.io/?https://en.wikipedia.org/wiki/Artificial_intelligence"></iframe>
-
   </div>
+
+
+
 
 
  <div class="content">
@@ -1359,6 +1586,7 @@ function loadCategories() {
       toolbox.classList.toggle('open');
 
 }
+    
     // Toggle the visibility of the mini-browser
 function toggleBrowser() {
   const browser = document.getElementById("mini-browser");
@@ -1411,7 +1639,68 @@ window.onload = function () {
   }
 };
 
-    
+    let browser = document.getElementById('browser');
+let searchInput = document.getElementById('searchInput');
+let webview = document.getElementById('webview');
+
+let homeUrl = 'https://en.wikipedia.org'; // Default homepage
+let history = [];
+let lastVisitedUrl = '';
+
+function toggleBrowser() {
+  browser.classList.toggle('active');
+}
+
+function goToUrl() {
+  let query = searchInput.value.trim();
+  if (!query) return;
+  
+  // Determine if input is a URL or search query
+  let url = isValidUrl(query) ? query : `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(query)}`;
+  loadUrl(url);
+}
+
+function loadUrl(url) {
+  if (webview.src !== url) {
+    lastVisitedUrl = webview.src;
+    history.push(webview.src);
+    webview.src = url;
+  }
+}
+
+function refreshPage() {
+  webview.src = webview.src;
+}
+
+function goHome() {
+  loadUrl(homeUrl);
+}
+
+function closeBrowser() {
+  browser.classList.remove('active');
+}
+
+function showHistory() {
+  alert('History:\n' + history.join('\n'));
+}
+
+function goToLast() {
+  if (lastVisitedUrl) {
+    loadUrl(lastVisitedUrl);
+  } else {
+    alert('No last visited page available.');
+  }
+}
+
+function isValidUrl(string) {
+  try {
+    new URL(string);
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
     // Authentication Logic
     document.addEventListener('DOMContentLoaded', () => {
       const secretCode = localStorage.getItem('secretCode');
