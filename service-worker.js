@@ -35,4 +35,19 @@ self.addEventListener('fetch', (event) => {
       return response || fetch(event.request);
     })
   );
+  
+// Activate the service worker and clean old caches
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(
+        keyList.map((key) => {
+          if (key !== CACHE_NAME) {
+            console.log("Removing old cache", key);
+            return caches.delete(key);
+          }
+        })
+      );
+    })
+  );
 });
