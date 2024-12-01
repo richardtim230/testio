@@ -2,7 +2,7 @@ const CACHE_NAME = 'student-support-cache-v1';
 const ASSETS = [
   '/',
   '/index.html',
-  '/app.js',
+  '/script.js',
   'https://cdn.quilljs.com/1.3.7/quill.min.js',
   'https://cdn.quilljs.com/1.3.7/quill.snow.css',
 ];
