@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Practice Examination</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+  <!-- Homepage -->
+
+  <section id="homepage">
+
+    <header class="header" style="background: linear-gradient(135deg, #4caf50, #81c784);">
+
+      <h1>Welcome to the Academic Archive</h1>
+
+      <p>Prepare for exams with practice questions for each department.</p>
+
+    </header>
+
+    <main class="main-content">
+
+      <div class="intro">
+
+        <h2>Practice Exams for Departments</h2>
+
+        <p>Select your department and enter the access code to start practicing questions.</p>
+
+      </div>
+
+      <div class="buttons">
+
+        <button class="button" onclick="openLoginModal('zoology')">Zoology</button>
+
+        <button class="button" onclick="openLoginModal('biology')">Biology</button>
+
+        <button class="button" onclick="openLoginModal('chemistry')">Chemistry</button>
+
+        <button class="button" onclick="openLoginModal('physics')">Physics</button>
+
+      </div>
+
+    </main>
+
+    <footer class="footer">
+
+      <p>© 2024 Academic Archive. All rights reserved. Obafemi Awolowo University</p>
+
+    </footer>
+
+  </section>
+
+  <!-- Login Modal -->
+
+  <div id="loginModal" class="modal">
+
+    <div class="modal-content">
+
+      <h2 id="modal-title">Enter Access Code</h2>
+
+      <form id="loginForm">
+
+        <label for="accessCode">Access Code:</label>
+
+        <input type="text" id="accessCode" placeholder="Enter your access code" required>
+
+        <button type="submit" class="submit-btn">Submit</button>
+
+      </form>
+
+      <button class="close-btn" onclick="closeLoginModal()">Close</button>
+
+    </div>
+
+  </div>
+
+  <!-- Exam Questions Section -->
+
+  <section id="exam-questions" style="display: none;">
+
+    <header class="header" style="background: linear-gradient(120deg, #673ab7, #512da8);">
+
+      <h1 id="exam-title">Examination Questions</h1>
+
+      <p>Answer these practice questions to test your knowledge.</p>
+
+    </header>
+
+    <main class="main-content">
+
+      <div id="questions-container">
+
+        <!-- Questions will be dynamically loaded here -->
+
+      </div>
+
+    </main>
+
+    <footer class="footer">
+
+      <p>© 2024 Academic Archive. All rights reserved. Obafemi Awolowo University</p>
+
+      <button class="back-btn" onclick="goToHomepage()">Back to Homepage</button>
+
+    </footer>
+
+  </section>
+
+  <script src="scripts.js"></script>
+
+</body>
+
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

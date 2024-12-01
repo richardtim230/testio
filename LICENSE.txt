@@ -1,7 +1,7 @@
 The MIT License (MIT)
 
-Copyright (c) 2024 Richard Ochuko (https://codepen.io/Richard-Ochuko/pen/YPKzMQr)
-Fork of an original work Untitled (https://codepen.io/Richard-Ochuko/pen/EaYxXQq)
+Copyright (c) 2024 Richard Ochuko (https://codepen.io/Richard-Ochuko/pen/GgKJmgG)
+Fork of an original work Untitled (https://codepen.io/Richard-Ochuko/pen/qEWdrdB)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
