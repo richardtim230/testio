@@ -451,3 +451,10 @@ function goToHomepage() {
   document.getElementById('homepage').style.display = 'block';
 
 }
+
+ if navigator.serviceWorker.register('/service-worker.js')
+        .then(() => console.log('Service Worker Registered'))
+        .catch((error) => console.error('Service Worker Registration Failed:', error));
+  }
+
+  </scrip
