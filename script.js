@@ -322,6 +322,148 @@ const questions = {
 
   // Add questions for biology, chemistry, and physics in the same structure
 
+biology: [
+  
+  {
+    "question": "Open type of circulatory system is found:",
+    "options": ["Pila only", "Cockroach only", "Both (a) & (b)", "None of these"],
+    "answer": "Both (a) & (b)",
+    "image": "https://via.placeholder.com/150?text=Circulatory+System"
+  },
+  {
+    "question": "Shell in pila is made up of:",
+    "options": ["Silica only", "CaCO3", "CaCO3 + chitin", "Silica + CaCO3"],
+    "answer": "CaCO3",
+    "image": "https://via.placeholder.com/150?text=Pila+Shell"
+  },
+  {
+    "question": "Pila is:",
+    "options": ["Aquatic", "Terrestrial", "Amphibious", "Arborial"],
+    "answer": "Amphibious",
+    "image": "https://via.placeholder.com/150?text=Pila"
+  },
+  {
+    "question": "Water vascular system is present in:",
+    "options": ["Nematodes", "Molluscs", "Echinoderms", "Arthropods"],
+    "answer": "Echinoderms",
+    "image": "https://via.placeholder.com/150?text=Water+Vascular+System"
+  },
+  {
+    "question": "Water vascular system of coelomic canals is found in:",
+    "options": ["Sponges", "Metridium", "Star-Fish", "None of these"],
+    "answer": "Star-Fish",
+    "image": "https://via.placeholder.com/150?text=Starfish+Vascular+System"
+  },
+  {
+    "question": "There are no copulatory organs in:",
+    "options": ["Star-fish", "Cockroach", "Ascaris", "Mosquito"],
+    "answer": "Star-fish",
+    "image": "https://via.placeholder.com/150?text=Starfish+Reproduction"
+  },
+  {
+    "question": "Madreporite is present in:",
+    "options": ["Star-fish", "Ascaris", "Hydra", "House-fly"],
+    "answer": "Star-fish",
+    "image": "https://via.placeholder.com/150?text=Madreporite"
+  },
+  {
+    "question": "Sea-cucumber belongs to:",
+    "options": ["Annelida", "Arthropoda", "Mullusca", "None of these"],
+    "answer": "None of these",
+    "image": "https://via.placeholder.com/150?text=Sea+Cucumber"
+  },
+  {
+    "question": "Forcep-like pedicellariae are used in star-fish for:",
+    "options": ["Locomotion", "Copulation", "Food capture and cleaning body", "Excretion of wastes by the animal"],
+    "answer": "Food capture and cleaning body",
+    "image": "https://via.placeholder.com/150?text=Starfish+Pedicellariae"
+  },
+  {
+    "question": "Excretory organs are totally absent in:",
+    "options": ["Molluscs", "Arthropods", "View Answer", "Nematodes"],
+    "answer": "Nematodes",
+    "image": "https://via.placeholder.com/150?text=Nematodes"
+  },
+  {
+    "question": "Which of these animals respires through papillae:",
+    "options": ["Star-fish", "Hydra", "Prawn", "Cockroach"],
+    "answer": "Star-fish",
+    "image": "https://via.placeholder.com/150?text=Respiration"
+  },
+  {
+    "question": "Tube feet in star-fish are used for:",
+    "options": ["Locomotion", "Food capturing", "Both of these", "None of these"],
+    "answer": "Both of these",
+    "image": "https://via.placeholder.com/150?text=Tube+Feet"
+  },
+  {
+    "question": "Pest of pearl-oyster is:",
+    "options": ["Star-fish", "Crab", "Fish", "None of these"],
+    "answer": "Star-fish",
+    "image": "https://via.placeholder.com/150?text=Pest"
+  },
+  {
+    "question": "Spines are found on the body surface of:",
+    "options": ["Sycon", "Cockroach", "House fly", "Star fish"],
+    "answer": "Star fish",
+    "image": "https://via.placeholder.com/150?text=Spiny+Surface"
+  },
+  {
+    "question": "Animals with spiny skin are called:",
+    "options": ["Arthropoda", "Mollusca", "Helminthes", "Echinodermata"],
+    "answer": "Echinodermata",
+    "image": "https://via.placeholder.com/150?text=Spiny+Skin"
+  },
+  {
+    "question": "Star fish belongs to phylum:",
+    "options": ["Cnidaria", "Nematoda", "Mollusca", "Echinodermata"],
+    "answer": "Echinodermata",
+    "image": "https://via.placeholder.com/150?text=Phylum+Starfish"
+  },
+  {
+    "question": "Which of these groups has exclusively marine animals:",
+    "options": ["Echinodermata", "Cnidaria", "Mollusca", "None of these"],
+    "answer": "Echinodermata",
+    "image": "https://via.placeholder.com/150?text=Marine+Animals"
+  },
+  {
+    "question": "Which of these groups has no parasitic forms:",
+    "options": ["Protozoa", "Nematoda", "Echinodermata", "Arthropoda"],
+    "answer": "Echinodermata",
+    "image": "https://via.placeholder.com/150?text=No+Parasites"
+  },
+  {
+    "question": "Adult echinoderms are:",
+    "options": ["Radially symmetrical", "Bilaterally symmetrical", "Statically symmetrical", "None of these"],
+    "answer": "Radially symmetrical",
+    "image": "https://via.placeholder.com/150?text=Adult+Echinoderms"
+  },
+  {
+    "question": "Larvae of echinoderms are:",
+    "options": ["Radially symmetrical", "Bilaterally symmetrical", "Statically symmetrical", "Asymmetrical"],
+    "answer": "Bilaterally symmetrical",
+    "image": "https://via.placeholder.com/150?text=Echinoderm+Larvae"
+  },
+  {
+    "question": "Larvae of star fish are:",
+    "options": ["Asymmetrical", "Bilaterally symmetrical", "Irregular", "None of these"],
+    "answer": "Bilaterally symmetrical",
+    "image": "https://via.placeholder.com/150?text=Starfish+Larvae"
+  },
+  {
+    "question": "In which of these the sexual reproduction takes place without copulation:",
+    "options": ["Cockroach", "Ascaris", "Star Fish", "Earthworm"],
+    "answer": "Star Fish",
+    "image": "https://via.placeholder.com/150?text=Reproduction"
+  },
+  {
+    "question": "Fertilization is external and occurring in sea water in:",
+    "options": ["Star fish", "Mosquito", "Earthworm", "None of these"],
+    "answer": "Star fish",
+    "image": "https://via.placeholder.com/150?text=Fertilization"
+  }
+], 
+
 };
 
 // Track score and current question
