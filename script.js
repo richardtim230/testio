@@ -622,7 +622,9 @@ function displaySummary() {
 
   `;
 
-    // Check and set image
+}
+
+  // Check and set image
   const questionImage = document.getElementById("question-image");
   if (questionObj.image) {
     questionImage.src = questionObj.image;
@@ -631,8 +633,6 @@ function displaySummary() {
     questionImage.classList.add("hidden");
   }
     }
-
-}
 
 // Go Back to Homepage
 
