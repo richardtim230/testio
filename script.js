@@ -7,6 +7,7 @@ const accessCodes = {
   biology: 'bio456',
 
   chemistry: 'chem789',
+  botany: 'bot009', 
 
   physics: 'phys101',
 
