@@ -1002,49 +1002,11 @@ function startExam(department) {
 
   displayQuestion();
 
-};
-
-let timerInterval;
-let currentQuestionIndex = 0;
-let currentScore = 0;
-let attemptedQuestions = [];
-let selectedQuestions = [];
-
-// Function to populate selectedQuestions (example)
-function selectQuestions(numQuestions, questionBank) {
-  if (!questionBank || questionBank.length < numQuestions) {
-    console.error("Not enough questions in the bank or question bank not defined!");
-    alert("Error: Not enough questions available for the quiz."); //Inform the user about the error.
-    return false;
-  }
-  selectedQuestions = questionBank.slice(0, numQuestions);
-  return true;
 }
 
+let attemptedQuestions = []; // To store attempted questions
 
-// Start the timer
-function startTimer(minutes) {
-  const timerElement = document.getElementById('timer');
-  let remainingTime = minutes * 60;
-
-  function updateTimer() {
-    const mins = Math.floor(remainingTime / 60);
-    const secs = remainingTime % 60;
-    timerElement.textContent = `Time Remaining: ${mins}:${secs < 10 ? '0' : ''}${secs}`;
-
-    if (remainingTime <= 0) {
-      clearInterval(timerInterval);
-      alert('Time is up! Submitting your exam.');
-      displaySummary();
-    }
-    remainingTime--;
-  }
-
-  updateTimer();
-  timerInterval = setInterval(updateTimer, 1000);
-}
-
-// Display a question
+// Display the current question
 function displayQuestion() {
   const container = document.getElementById('questions-container');
   container.innerHTML = '';
@@ -1056,59 +1018,59 @@ function displayQuestion() {
     questionDiv.innerHTML = `
       <h3>${currentQuestionIndex + 1}. ${currentQuestion.question}</h3>
       <ul class="options">
-        ${currentQuestion.options.map(option => `
-          <li><button onclick="checkAnswer('${option}')">${option}</button></li>
-        `).join('')}
+        ${currentQuestion.options
+          .map(
+            (option) =>
+              `<li><button onclick="checkAnswer('${option}')">${option}</button></li>`
+          )
+          .join('')}
       </ul>
     `;
     container.appendChild(questionDiv);
   } else {
-    displaySummary();
+    displaySummary(); // Show the summary when all questions are answered
   }
 }
 
-// Check the user's answer
+// Check the user's answer and save the attempt
 function checkAnswer(selectedOption) {
   const currentQuestion = selectedQuestions[currentQuestionIndex];
-  const optionButton = event.target; // Get the clicked button
-  optionButton.disabled = true; // Disable the button after clicking
 
-  const feedback = document.createElement('p');
-  feedback.classList.add('feedback');
-
+  // Save the question attempt
   attemptedQuestions.push({
     question: currentQuestion.question,
     selectedAnswer: selectedOption,
     correctAnswer: currentQuestion.answer,
     isCorrect: selectedOption === currentQuestion.answer,
   });
+
+  // Provide feedback and move to the next question
   if (selectedOption === currentQuestion.answer) {
     currentScore++;
-    feedback.textContent = 'Correct!';
-    feedback.classList.add('correct');
+    alert('Correct!');
   } else {
-    feedback.textContent = `Wrong! The correct answer is: ${currentQuestion.answer}`;
-    feedback.classList.add('incorrect');
+    alert(`Wrong! The correct answer is: ${currentQuestion.answer}`);
   }
 
-  const questionDiv = optionButton.closest('.question');
-  questionDiv.appendChild(feedback);
-
   currentQuestionIndex++;
-  displayQuestion(); //Call displayQuestion here to move to the next question.
+  displayQuestion();
 }
 
 // Display the summary
 function displaySummary() {
-  clearInterval(timerInterval);
   const container = document.getElementById('questions-container');
-  container.innerHTML = '';
+  container.innerHTML = ''; // Clear previous content
+
   const summarySection = document.getElementById('exam-summary');
-  summarySection.classList.remove('hidden');
+  summarySection.classList.remove('hidden'); // Show the summary section
+
+  // Display the score
   const summaryScore = document.getElementById('summary-score');
   summaryScore.innerText = `You scored ${currentScore} out of ${selectedQuestions.length}.`;
+
+  // Display attempted questions with corrections
   const summaryQuestions = document.getElementById('summary-questions');
-  summaryQuestions.innerHTML = '';
+  summaryQuestions.innerHTML = ''; // Clear previous summary
 
   attemptedQuestions.forEach((attempt, index) => {
     const div = document.createElement('div');
@@ -1122,16 +1084,24 @@ function displaySummary() {
   });
 }
 
-// Reset for a new test
+// Reset the application for another test
 function goToHomepage() {
-  clearInterval(timerInterval);
+  clearInterval(timerInterval); // Stop the timer
   currentQuestionIndex = 0;
   currentScore = 0;
-  attemptedQuestions = [];
-  selectedQuestions = [];
+  attemptedQuestions = []; // Clear previous attempts
 
+  // Hide exam and summary sections
   document.getElementById('exam-questions').classList.add('hidden');
   document.getElementById('exam-summary').classList.add('hidden');
+
+  // Show the homepage
   document.getElementById('homepage').classList.remove('hidden');
-    }
-                                         
+}
+
+
+if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(() => console.log('Service Worker Registered'))
+        .catch((error) => console.error('Service Worker Registration Failed:', error));
+  }
