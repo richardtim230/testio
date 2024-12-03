@@ -1,26 +1,3 @@
-// Example in JavaScript for a web application
-document.getElementById("Zoology").addEventListener("click", function() {
-    const condition = getCondition(); // Function to determine condition
-    if (condition === "zoo123") {
-        openSection("zoology1");
-    } else if (condition === "ZOO201") {
-        openSection("zoology2");
-    }
-});
-
-function openSection(zoology1) {
-    const section = document.getElementById(sectionID);
-    if (zoology2) {
-        section.scrollIntoView(); // Example action: scroll to the section
-    }
-}
-
-function getCondition() {
-    // Logic to determine which section to open
-    return "zoology1"; // Or "zoology2"
-};
-
-
 // Ensure the DOM is loaded before running the script
 document.addEventListener("DOMContentLoaded", () => {
   const questionImage = document.getElementById("question-image");
