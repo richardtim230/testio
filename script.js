@@ -1004,101 +1004,107 @@ function startExam(department) {
 
 }
 
-let attemptedQuestions = []; // To store attempted questions
+// Display Current Question
 
-// Display the current question
 function displayQuestion() {
+
   const container = document.getElementById('questions-container');
+
   container.innerHTML = '';
 
   if (currentQuestionIndex < selectedQuestions.length) {
+
     const currentQuestion = selectedQuestions[currentQuestionIndex];
+
     const questionDiv = document.createElement('div');
+
     questionDiv.classList.add('question');
+
     questionDiv.innerHTML = `
+
       <h3>${currentQuestionIndex + 1}. ${currentQuestion.question}</h3>
+
       <ul class="options">
+
         ${currentQuestion.options
+
           .map(
+
             (option) =>
+
               `<li><button onclick="checkAnswer('${option}')">${option}</button></li>`
+
           )
+
           .join('')}
+
       </ul>
+
     `;
+
     container.appendChild(questionDiv);
+
   } else {
-    displaySummary(); // Show the summary when all questions are answered
+
+    displaySummary();
+
   }
+
 }
 
-// Check the user's answer and save the attempt
+// Check Answer
+
 function checkAnswer(selectedOption) {
+
   const currentQuestion = selectedQuestions[currentQuestionIndex];
 
-  // Save the question attempt
-  attemptedQuestions.push({
-    question: currentQuestion.question,
-    selectedAnswer: selectedOption,
-    correctAnswer: currentQuestion.answer,
-    isCorrect: selectedOption === currentQuestion.answer,
-  });
-
-  // Provide feedback and move to the next question
   if (selectedOption === currentQuestion.answer) {
+
     currentScore++;
+
     alert('Correct!');
+
   } else {
-    alert(`Wrong! The correct answer is: ${currentQuestion.answer}`);
+
+    alert(`Wrong! The correct answer is ${currentQuestion.answer}.`);
+
   }
 
   currentQuestionIndex++;
+
   displayQuestion();
+
 }
 
-// Display the summary
+// Display Summary
+
 function displaySummary() {
+
   const container = document.getElementById('questions-container');
-  container.innerHTML = ''; // Clear previous content
 
-  const summarySection = document.getElementById('exam-summary');
-  summarySection.classList.remove('hidden'); // Show the summary section
+  container.innerHTML = `
 
-  // Display the score
-  const summaryScore = document.getElementById('summary-score');
-  summaryScore.innerText = `You scored ${currentScore} out of ${selectedQuestions.length}.`;
+    <h3>Exam Summary</h3>
 
-  // Display attempted questions with corrections
-  const summaryQuestions = document.getElementById('summary-questions');
-  summaryQuestions.innerHTML = ''; // Clear previous summary
+    <p>You scored ${currentScore} out of ${selectedQuestions.length}.</p>
 
-  attemptedQuestions.forEach((attempt, index) => {
-    const div = document.createElement('div');
-    div.classList.add('question-summary');
-    div.innerHTML = `
-      <p><strong>${index + 1}. ${attempt.question}</strong></p>
-      <p>Your Answer: <span class="${attempt.isCorrect ? 'correct' : 'incorrect'}">${attempt.selectedAnswer}</span></p>
-      <p>Correct Answer: <span class="correct">${attempt.correctAnswer}</span></p>
-    `;
-    summaryQuestions.appendChild(div);
-  });
+    <p>${currentScore >= 30 ? 'Congratulations, you passed!' : 'Sorry, you failed. Try again!'}</p>
+
+    <button class="button" onclick="goToHomepage()">Back to Homepage</button>
+
+  `;
+
 }
 
-// Reset the application for another test
+// Go Back to Homepage
+
 function goToHomepage() {
-  clearInterval(timerInterval); // Stop the timer
-  currentQuestionIndex = 0;
-  currentScore = 0;
-  attemptedQuestions = []; // Clear previous attempts
 
-  // Hide exam and summary sections
-  document.getElementById('exam-questions').classList.add('hidden');
-  document.getElementById('exam-summary').classList.add('hidden');
+  document.getElementById('exam-questions').style.display = 'none';
 
-  // Show the homepage
-  document.getElementById('homepage').classList.remove('hidden');
+  document.getElementById('homepage').style.display = 'block';
+
 }
-
 
 if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js')
