@@ -624,16 +624,6 @@ function displaySummary() {
 
 }
 
-  // Check and set image
-  const questionImage = document.getElementById("question-image");
-  if (questionObj.image) {
-    questionImage.src = questionObj.image;
-    questionImage.classList.remove("hidden");
-  } else {
-    questionImage.classList.add("hidden");
-  }
-    }
-
 // Go Back to Homepage
 
 function goToHomepage() {
