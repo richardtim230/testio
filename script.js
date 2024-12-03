@@ -1,3 +1,15 @@
+// Show the popup when the page loads
+window.onload = function () {
+  const popup = document.getElementById('instructionPopup');
+  popup.style.display = 'flex';
+
+  // Close the popup when the "Got It!" button is clicked
+  document.getElementById('closePopupBtn').onclick = function () {
+    popup.style.display = 'none';
+  };
+};
+
+
 // Ensure the DOM is loaded before running the script
 document.addEventListener("DOMContentLoaded", () => {
   const questionImage = document.getElementById("question-image");
