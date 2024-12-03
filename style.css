@@ -498,3 +498,30 @@ a {
 .close-popup-btn:hover {
   background-color: #45a049;
 }
+#exam-summary {
+  text-align: center;
+  margin: 20px;
+}
+
+#summary-questions {
+  margin-top: 20px;
+  text-align: left;
+}
+
+#summary-questions .question-summary {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.incorrect {
+  color: red;
+  font-weight: bold;
+}
