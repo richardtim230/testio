@@ -1002,7 +1002,7 @@ function startExam(department) {
 
   displayQuestion();
 
-}
+};
 
 let timerInterval;
 let currentQuestionIndex = 0;
@@ -1125,7 +1125,6 @@ function goToHomepage() {
   document.getElementById('exam-questions').classList.add('hidden');
   document.getElementById('homepage').classList.remove('hidden');
 }
-
 
 if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js')
