@@ -831,7 +831,7 @@ function checkAnswer(selectedOption) {
 
   } else {
 
-    alert(`Wrong! The correct answer is ${currentQuestion.answer}.`);
+    alert(`Wrong! The correct answer is ${currentQuestion.answer""}.`);
 
   }
 
