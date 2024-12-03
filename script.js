@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const accessCodes = {
 
-  zoology: 'zoo123',
+  zoology1: 'zoo123',
+  zoology2: 'ZOO201', 
+
 
   biology: 'bio456',
 
@@ -48,7 +50,7 @@ const accessCodes = {
 
 const questions = {
 
-  zoology: [
+  zoology1: [
 
     { question: 'What is the largest land animal?', options: ['Elephant', 'Giraffe', 'Hippo'], answer: 'Elephant' },
     
@@ -492,6 +494,212 @@ biology: [
     "image": "https://via.placeholder.com/150?text=Fertilization"
   }
 ], 
+
+zoology2: [
+  
+  { 
+    "question": "Systematics is broadly defined as the study of:", 
+    "options": ["Taxonomic hierarchy", "Organic diversity", "Ecological adaptations", "Genetic mutations"], 
+    "answer": "Organic diversity" 
+  },
+  { 
+    "question": "Who defined systematics as 'the scientific study of kinds and diversity of organisms and of any and all relationships among them'?", 
+    "options": ["Linnaeus", "Simpson", "Candolle", "Blackwell"], 
+    "answer": "Simpson" 
+  },
+  { 
+    "question": "The term 'taxonomy' was introduced by:", 
+    "options": ["Blackwell", "A. P. de Candolle", "Linnaeus", "Simpson"], 
+    "answer": "A. P. de Candolle" 
+  },
+  { 
+    "question": "The Greek word 'taxis' in taxonomy means:", 
+    "options": ["Law", "Arrangement", "Evolution", "Order"], 
+    "answer": "Arrangement" 
+  },
+  { 
+    "question": "Modern taxonomy aims to:", 
+    "options": ["Avoid ecological studies", "Provide methods of identification and interpret evolutionary processes", "Focus only on fossils", "Classify organisms into arbitrary groups"], 
+    "answer": "Provide methods of identification and interpret evolutionary processes" 
+  },
+  { 
+    "question": "What is the primary purpose of classification in taxonomy?", 
+    "options": ["Organizing organisms into distinct groups", "Studying vernacular names", "Analyzing molecular data exclusively", "Focusing on behavioral studies"], 
+    "answer": "Organizing organisms into distinct groups" 
+  },
+  { 
+    "question": "Which is a key product of biological classification?", 
+    "options": ["Reconstruction of evolutionary pathways", "Identification of fossil structures", "Focus on species fixity", "Simplifying biodiversity through vernacular names"], 
+    "answer": "Reconstruction of evolutionary pathways" 
+  },
+  { 
+    "question": "Systematics contributes to biodiversity conservation by:", 
+    "options": ["Documenting extant species only", "Focusing on taxonomic nomenclature", "Identifying and prioritizing unique and endangered species", "Studying ancient ecological systems"], 
+    "answer": "Identifying and prioritizing unique and endangered species" 
+  },
+  { 
+    "question": "Phylogenetic analysis is used to:", 
+    "options": ["Study evolutionary pathways", "Analyze ecological niches", "Focus on taxonomic ranks only", "Identify vernacular names"], 
+    "answer": "Study evolutionary pathways" 
+  },
+  { 
+    "question": "Who first derived the term 'taxonomy' from its Greek roots?", 
+    "options": ["Linnaeus", "A. P. de Candolle", "Simpson", "Blackwell"], 
+    "answer": "A. P. de Candolle" 
+  },
+  { 
+    "question": "The primary distinction between taxonomy and systematics is:", 
+    "options": ["Taxonomy focuses on fossils; systematics focuses on living organisms", "Systematics deals with evolutionary relationships, taxonomy deals with practical classification", "Systematics avoids phylogenetic analysis", "Taxonomy includes geological studies"], 
+    "answer": "Systematics deals with evolutionary relationships, taxonomy deals with practical classification" 
+  },
+  { 
+    "question": "The Latin roots 'classis' and 'facere' in classification mean:", 
+    "options": ["Law and order", "Class and make", "Species and formation", "Evolution and adaptation"], 
+    "answer": "Class and make" 
+  },
+  { 
+    "question": "Biological classification involves assigning organisms to:", 
+    "options": ["Random groups", "Taxa indicating relationships", "Groups based on vernacular names", "Non-hierarchical clusters"], 
+    "answer": "Taxa indicating relationships" 
+  },
+  { 
+    "question": "Systematics provides independent evidence for:", 
+    "options": ["Geological patterns", "Behavioral traits", "Modern ecological adaptations", "Molecular evolution exclusively"], 
+    "answer": "Geological patterns" 
+  },
+  { 
+    "question": "Systematics is foundational for:", 
+    "options": ["Comparative biology", "Vernacular nomenclature", "Molecular taxonomy only", "Behavioral ecology exclusively"], 
+    "answer": "Comparative biology" 
+  },
+  { 
+    "question": "The study of phylogenetic patterns can help in:", 
+    "options": ["Predicting traits in related taxa", "Analyzing vernacular differences", "Classifying organisms into distinct behavior groups", "Avoiding fossil records"], 
+    "answer": "Predicting traits in related taxa" 
+  },
+  { 
+    "question": "Modern taxonomy incorporates:", 
+    "options": ["Species fixity concepts", "Evolutionary and molecular data", "Exclusively fossil-based studies", "Avoidance of numerical taxonomy"], 
+    "answer": "Evolutionary and molecular data" 
+  },
+  { 
+    "question": "What is a major contribution of phylogenetic analysis?", 
+    "options": ["Elimination of extinct taxa", "Reconstruction of the history of life", "Introduction of vernacular systems", "Avoiding molecular comparisons"], 
+    "answer": "Reconstruction of the history of life" 
+  },
+  { 
+    "question": "Systematics organizes biodiversity for:", 
+    "options": ["Public awareness only", "Researchers and conservation priorities", "Focus on vernacular nomenclature", "Eliminating fossil-based data"], 
+    "answer": "Researchers and conservation priorities" 
+  },
+  { 
+    "question": "Classification requires comparison of entities based on:", 
+    "options": ["Genetic similarity alone", "Differences and similarities", "Behavioral traits only", "Fossil records exclusively"], 
+    "answer": "Differences and similarities" 
+  }, 
+
+  { 
+    "question": "Systematics provides hypotheses of:", 
+    "options": ["Behavioral traits", "The history of life", "Geographical adaptations", "Molecular pathways"], 
+    "answer": "The history of life" 
+  },
+  { 
+    "question": "Who defined taxonomy as 'the day-to-day practice of dealing with kinds of organisms'?", 
+    "options": ["Simpson", "Blackwell", "Candolle", "Linnaeus"], 
+    "answer": "Blackwell" 
+  },
+  { 
+    "question": "A taxonomist decides whether differences between organisms are due to:", 
+    "options": ["Behavioral adaptations", "Environmental adaptation or common ancestry", "Genetic mutations exclusively", "Fossil evidence"], 
+    "answer": "Environmental adaptation or common ancestry" 
+  },
+  { 
+    "question": "Which of the following is not a key aim of taxonomy?", 
+    "options": ["Detecting evolutionary processes", "Providing a convenient method of identification", "Focusing on vernacular names", "Expressing natural relationships of organisms"], 
+    "answer": "Focusing on vernacular names" 
+  },
+  { 
+    "question": "The practical aspect of taxonomy involves:", 
+    "options": ["Theoretical classification rules", "Handling and identifying specimens", "Avoiding molecular studies", "Focusing on extinct organisms only"], 
+    "answer": "Handling and identifying specimens" 
+  },
+  { 
+    "question": "The results of biological classification provide insights into:", 
+    "options": ["Behavioral patterns", "Species formation and evolutionary trends", "Random ecological adaptations", "Regional nomenclature"], 
+    "answer": "Species formation and evolutionary trends" 
+  },
+  { 
+    "question": "Systematics aids geologists by:", 
+    "options": ["Reconstructing landmass changes", "Identifying behavior traits", "Analyzing fossilized DNA", "Mapping ecological regions"], 
+    "answer": "Reconstructing landmass changes" 
+  },
+  { 
+    "question": "What is a long-standing role of systematics?", 
+    "options": ["Providing vernacular names", "Documenting and identifying new species", "Avoiding fossil data", "Focusing solely on molecular data"], 
+    "answer": "Documenting and identifying new species" 
+  },
+  { 
+    "question": "In taxonomy, 'nomen' from Greek means:", 
+    "options": ["Order", "Law", "Name", "Arrange"], 
+    "answer": "Name" 
+  },
+  { 
+    "question": "Which term refers to the grouping of organisms to indicate relationships?", 
+    "options": ["Taxonomy", "Classification", "Systematics", "Nomenclature"], 
+    "answer": "Classification" 
+  },
+  { 
+    "question": "Phylogenetic analysis combines data from:", 
+    "options": ["DNA only", "Extant organisms and fossils", "Behavioral studies exclusively", "Ecological adaptations"], 
+    "answer": "Extant organisms and fossils" 
+  },
+  { 
+    "question": "Common ancestry results in organisms sharing:", 
+    "options": ["Behavioral patterns", "Character states", "Fossil evidence", "Vernacular names"], 
+    "answer": "Character states" 
+  },
+  { 
+    "question": "Systematics supports biodiversity conservation by:", 
+    "options": ["Ignoring evolutionary processes", "Prioritizing unique species for conservation", "Focusing only on fossils", "Analyzing behavioral traits"], 
+    "answer": "Prioritizing unique species for conservation" 
+  },
+  { 
+    "question": "Which is not a role of systematics?", 
+    "options": ["Providing molecular pathways", "Hypothesizing life’s history", "Organizing biodiversity", "Mapping geological patterns"], 
+    "answer": "Providing molecular pathways" 
+  },
+  { 
+    "question": "Classification demands:", 
+    "options": ["Ignoring similarities", "Detection of differences and similarities", "Focus on fossil analysis exclusively", "Avoiding ecological studies"], 
+    "answer": "Detection of differences and similarities" 
+  },
+  { 
+    "question": "Simpson defined taxonomy as:", 
+    "options": ["The practice of arranging organisms", "The theoretical study of classification principles", "The study of fossils", "A synonym for systematics"], 
+    "answer": "The theoretical study of classification principles" 
+  },
+  { 
+    "question": "The term 'systematics' derives from:", 
+    "options": ["Greek", "Latinized Greek", "Latin", "Modern English"], 
+    "answer": "Latinized Greek" 
+  },
+  { 
+    "question": "What distinguishes systematics from taxonomy?", 
+    "options": ["Systematics focuses on classification techniques", "Systematics includes evolutionary relationships", "Systematics avoids nomenclature", "Systematics excludes fossils"], 
+    "answer": "Systematics includes evolutionary relationships" 
+  },
+  { 
+    "question": "Which is an essential step in classification?", 
+    "options": ["Using vernacular names", "Arranging organisms into groups based on relationships", "Avoiding molecular comparisons", "Ignoring evolutionary data"], 
+    "answer": "Arranging organisms into groups based on relationships" 
+  },
+  { 
+    "question": "Modern systematics integrates data from:", 
+    "options": ["Molecular, ecological, and fossil evidence", "Behavioral studies only", "Fossil records exclusively", "Regional species distribution"], 
+    "answer": "Molecular, ecological, and fossil evidence" 
+  }
+], 
+  
 
 };
 
