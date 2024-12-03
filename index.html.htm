@@ -143,39 +143,33 @@
 
   </div>
 
-  <!-- Exam Questions Section -->
+<!-- Exam Questions Section -->
+<section id="exam-questions" class="hidden">
+  <header class="header" style="background: linear-gradient(120deg, #673ab7, #512da8);">
+    <h1 id="exam-title">Examination Questions</h1>
+    <p id="timer" class="timer">Time Remaining: 00:00</p>
+  </header>
+  <main class="main-content">
+    <div id="questions-container">
+      <!-- Dynamic questions are displayed here -->
 
-  <section id="exam-questions" style="display: none;">
-
-    <header class="header" style="background: linear-gradient(120deg, #673ab7, #512da8);">
-
-      <h1 id="exam-title">Examination Questions</h1>
-
-      <p>Answer these practice questions to test your knowledge.</p>
-
-    </header>
-
-    <main class="main-content">
-
-      <div id="questions-container">
-
-        <!-- Questions will be dynamically loaded here -->
-
+      <!-- Exam Summary -->
+      <div id="exam-summary" class="hidden">
+        <h3>Exam Summary</h3>
+        <p id="summary-score"></p>
+        <div id="summary-questions">
+          <!-- Attempted questions and corrections will be displayed here -->
+        </div>
+        <button class="button" onclick="goToHomepage()">Take Another Test</button>
       </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <p>© 2024 Academic Archive. All rights reserved. Obafemi Awolowo University</p>
+    <button class="back-btn" onclick="goToHomepage()">Back to Homepage</button>
+  </footer>
+</section>
 
-    </main>
-
-    <img id="question-image" class="hidden" alt="Question Image">
-
-    <footer class="footer">
-
-      <p>© 2024 Academic Archive. All rights reserved. Obafemi Awolowo University</p>
-
-      <button class="back-btn" onclick="goToHomepage()">Back to Homepage</button>
-
-    </footer>
-
-  </section>
 
   <script>
      // Add image if it exists
