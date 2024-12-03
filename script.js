@@ -18,7 +18,7 @@ function openSection(zoology1) {
 function getCondition() {
     // Logic to determine which section to open
     return "zoology1"; // Or "zoology2"
-}
+};
 
 
 // Ensure the DOM is loaded before running the script
