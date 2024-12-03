@@ -6,7 +6,6 @@
   } else {
     questionImage.classList.add("hidden");
   }
-}
 
 // Predefined access codes for each department
 
