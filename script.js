@@ -1007,13 +1007,25 @@ function startExam(department) {
 let timerInterval;
 let currentQuestionIndex = 0;
 let currentScore = 0;
-let attemptedQuestions = []; // Tracks attempts
-let selectedQuestions = []; // Holds current test questions
+let attemptedQuestions = [];
+let selectedQuestions = [];
+
+// Function to populate selectedQuestions (example)
+function selectQuestions(numQuestions, questionBank) {
+  if (!questionBank || questionBank.length < numQuestions) {
+    console.error("Not enough questions in the bank or question bank not defined!");
+    alert("Error: Not enough questions available for the quiz."); //Inform the user about the error.
+    return false;
+  }
+  selectedQuestions = questionBank.slice(0, numQuestions);
+  return true;
+}
+
 
 // Start the timer
 function startTimer(minutes) {
   const timerElement = document.getElementById('timer');
-  let remainingTime = minutes * 60; // Convert minutes to seconds
+  let remainingTime = minutes * 60;
 
   function updateTimer() {
     const mins = Math.floor(remainingTime / 60);
@@ -1021,16 +1033,15 @@ function startTimer(minutes) {
     timerElement.textContent = `Time Remaining: ${mins}:${secs < 10 ? '0' : ''}${secs}`;
 
     if (remainingTime <= 0) {
-      clearInterval(timerInterval); // Stop the timer
+      clearInterval(timerInterval);
       alert('Time is up! Submitting your exam.');
       displaySummary();
     }
-
     remainingTime--;
   }
 
-  updateTimer(); // Initial call
-  timerInterval = setInterval(updateTimer, 1000); // Update every second
+  updateTimer();
+  timerInterval = setInterval(updateTimer, 1000);
 }
 
 // Display a question
@@ -1045,12 +1056,9 @@ function displayQuestion() {
     questionDiv.innerHTML = `
       <h3>${currentQuestionIndex + 1}. ${currentQuestion.question}</h3>
       <ul class="options">
-        ${currentQuestion.options
-          .map(
-            (option) =>
-              `<li><button onclick="checkAnswer('${option}')">${option}</button></li>`
-          )
-          .join('')}
+        ${currentQuestion.options.map(option => `
+          <li><button onclick="checkAnswer('${option}')">${option}</button></li>
+        `).join('')}
       </ul>
     `;
     container.appendChild(questionDiv);
@@ -1062,44 +1070,45 @@ function displayQuestion() {
 // Check the user's answer
 function checkAnswer(selectedOption) {
   const currentQuestion = selectedQuestions[currentQuestionIndex];
+  const optionButton = event.target; // Get the clicked button
+  optionButton.disabled = true; // Disable the button after clicking
 
-  // Track the question attempt
+  const feedback = document.createElement('p');
+  feedback.classList.add('feedback');
+
   attemptedQuestions.push({
     question: currentQuestion.question,
     selectedAnswer: selectedOption,
     correctAnswer: currentQuestion.answer,
     isCorrect: selectedOption === currentQuestion.answer,
   });
-
-  // Update the score and give feedback
   if (selectedOption === currentQuestion.answer) {
     currentScore++;
-    alert('Correct!');
+    feedback.textContent = 'Correct!';
+    feedback.classList.add('correct');
   } else {
-    alert(`Wrong! The correct answer is: ${currentQuestion.answer}`);
+    feedback.textContent = `Wrong! The correct answer is: ${currentQuestion.answer}`;
+    feedback.classList.add('incorrect');
   }
 
+  const questionDiv = optionButton.closest('.question');
+  questionDiv.appendChild(feedback);
+
   currentQuestionIndex++;
-  displayQuestion();
+  displayQuestion(); //Call displayQuestion here to move to the next question.
 }
 
 // Display the summary
 function displaySummary() {
-  clearInterval(timerInterval); // Stop the timer
-
+  clearInterval(timerInterval);
   const container = document.getElementById('questions-container');
-  container.innerHTML = ''; // Clear previous content
-
+  container.innerHTML = '';
   const summarySection = document.getElementById('exam-summary');
-  summarySection.classList.remove('hidden'); // Show summary section
-
-  // Display the score
+  summarySection.classList.remove('hidden');
   const summaryScore = document.getElementById('summary-score');
   summaryScore.innerText = `You scored ${currentScore} out of ${selectedQuestions.length}.`;
-
-  // Display each attempted question
   const summaryQuestions = document.getElementById('summary-questions');
-  summaryQuestions.innerHTML = ''; // Clear previous summary
+  summaryQuestions.innerHTML = '';
 
   attemptedQuestions.forEach((attempt, index) => {
     const div = document.createElement('div');
@@ -1115,19 +1124,14 @@ function displaySummary() {
 
 // Reset for a new test
 function goToHomepage() {
-  // Reset state
   clearInterval(timerInterval);
   currentQuestionIndex = 0;
   currentScore = 0;
   attemptedQuestions = [];
+  selectedQuestions = [];
 
-  // Hide summary and exam sections, show homepage
   document.getElementById('exam-questions').classList.add('hidden');
+  document.getElementById('exam-summary').classList.add('hidden');
   document.getElementById('homepage').classList.remove('hidden');
-}
-
-if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(() => console.log('Service Worker Registered'))
-        .catch((error) => console.error('Service Worker Registration Failed:', error));
-  }
+    }
+                                         
