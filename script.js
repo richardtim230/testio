@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const accessCodes = {
 
   zoology1: 'zoo123',
-  zoology2: 'ZOO201', 
+  'Animal Systematics': 'ZOO201', 
 
 
   biology: 'bio456',
@@ -495,7 +495,7 @@ biology: [
   }
 ], 
 
-zoology2: [
+'Animal Systematics': [
   
   { 
     "question": "Systematics is broadly defined as the study of:", 
