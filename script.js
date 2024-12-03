@@ -50,6 +50,119 @@ const accessCodes = {
 
 const questions = {
 
+chemistry: [
+  
+  { "question": "All measurements should provide the following information:",
+    "options": [
+      "The size or magnitude of the measurement",
+      "Indication of origin and standard of comparison",
+      "The indication of uncertainty and standard of comparison",
+      "A and C above"
+    ],
+    "answer": "A and C above"
+  },
+  {
+    "question": "Solve the following and record the answer in the correct number of significant figures: (2.568 x 5.8) ÷ 4.186",
+    "options": ["3.57", "3.5", "3.6", "3.558"],
+    "answer": "3.57"
+  },
+  {
+    "question": "L = mr²ω. If m = 5.79 ± 0.03 kg, r = 15.19 ± 0.02 m, and ω = 21.609 ± 0.004 s⁻¹. Calculate L.",
+    "options": [
+      "2.8 x 10⁴ kgm²s⁻¹",
+      "28868.80 kgm²s⁻¹",
+      "2.89 x 10⁴ kgm²s⁻¹",
+      "1900.51 kgm²s⁻¹"
+    ],
+    "answer": "2.89 x 10⁴ kgm²s⁻¹"
+  },
+  {
+    "question": "Calculate the percentage relative maximum error in L above.",
+    "options": ["5.81 %", "0.67 %", "5.48 x 10⁻³ %", "3.38 x 10⁻⁵ %"],
+    "answer": "0.67 %"
+  },
+  {
+    "question": "What type of reaction does this equation represent? CaCO₃ → CaO + CO₂",
+    "options": [
+      "Combination reaction",
+      "Replacement reaction",
+      "Decomposition reaction",
+      "Combustion reaction"
+    ],
+    "answer": "Decomposition reaction"
+  },
+  {
+    "question": "You performed an experiment in the lab and found that there are 36.3 inches in a meter. Using this experimental value, how many millimeters are there in 1.34 feet?",
+    "options": [
+      "4.43 x 10⁵ mm",
+      "43.05 x 10² mm",
+      "44.3 mm",
+      "4.43 x 10² mm"
+    ],
+    "answer": "4.43 x 10² mm"
+  },
+  {
+    "question": "Which of the following methods cannot be used to minimize determinate error?",
+    "options": [
+      "Calibration of apparatus",
+      "Starting all over again",
+      "Running of blank determination",
+      "Using of internal standard"
+    ],
+    "answer": "Starting all over again"
+  },
+  {
+    "question": "A sample of water was analyzed for chloride ion and the following results were obtained in μg/L: 5.013, 5.023, 5.017, 5.019, 5.010, 5.018, 5.021. Calculate the mean of the measurement.",
+    "options": ["5.017", "5.019", "5.018", "5.02"],
+    "answer": "5.018"
+  },
+  {
+    "question": "Calculate the standard deviation in the measurement of chloride ion in question 8 above.",
+    "options": ["0.0045", "0.005", "2.033", "0.004"],
+    "answer": "0.0045"
+  },
+  {
+    "question": "Which of the following statements is correct about determinate errors?",
+    "options": [
+      "Determinate errors are also known as random errors",
+      "Determinate errors are irregular and variable in magnitude and sign",
+      "They cannot in principle be corrected for",
+      "They are known as systematic errors"
+    ],
+    "answer": "They are known as systematic errors"
+  },
+  {
+    "question": "Which equation represents the second ionization energy of an element X?",
+    "options": [
+      "X(g) → X²⁺(g) + 2e⁻",
+      "X⁺(g) → X²⁺(g) + e⁻",
+      "X(g) + 2e⁻ → X²⁻(g)",
+      "X⁻(g) + e⁻ → X²⁻(g)"
+    ],
+    "answer": "X⁺(g) → X²⁺(g) + e⁻"
+  },
+  {
+    "question": "The Bohr theory of the atom was able to account for the following observed spectral lines of atomic hydrogen with exceptional precision except:",
+    "options": [
+      "I, II, and III",
+      "II, IV and V",
+      "I and IV",
+      "II only"
+    ],
+    "answer": "II only"
+  },
+  {
+    "question": "Given that Planck's constant (h) = 6.626 x 10⁻³⁴ J·s, mass of an electron (mₑ) = 9.109 x 10⁻³¹ kg, calculate the De Broglie wavelength of an electron traveling at the speed of light. Hints: speed of light (c) = 3 x 10⁸ m·s⁻¹",
+    "options": [
+      "4.85 x 10⁻¹² m",
+      "2.43 x 10⁻¹² m",
+      "2.42 x 10⁻¹² m",
+      "9.85 x 10⁻²⁴ m"
+    ],
+    "answer": "2.43 x 10⁻¹² m"
+  }
+], 
+
   'Introductory Zoology 1': [
 
     { question: 'What is the largest land animal?', options: ['Elephant', 'Giraffe', 'Hippo'], answer: 'Elephant' },
