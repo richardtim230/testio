@@ -2,16 +2,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   const questionImage = document.getElementById("question-image");
   
-  if (questionImage) {
-    if (questionObj.image) {
-      questionImage.src = questionObj.image;
-      questionImage.classList.remove("hidden");
-    } else {
-      questionImage.classList.add("hidden");
-    }
-  } else {
-    console.warn("Element with id 'question-image' not found.");
-  }
+  
+        if (question.image) {
+
+          const img = document.createElement("img");
+
+          img.src = question.image;
+
+          img.alt = "Question Image";
+
+          img.onerror = () => console.error("Failed to load image:", question.image);
+
+          questionElement.appendChild(img);
+
+        }
   
   // Example button event listener
   const button = document.getElementById("my-button");
@@ -354,9 +358,7 @@ biology: [
   {
     "question": "Open type of circulatory system is found:",
     "options": ["Pila only", "Cockroach only", "Both (a) & (b)", "None of these"],
-    "answer": "Both (a) & (b)",
-    "image": "https://via.placeholder.com/150?text=Circulatory+System"
-  },
+    "answer": "Both (a) & (b)"},
   {
     "question": "Shell in pila is made up of:",
     "options": ["Silica only", "CaCO3", "CaCO3 + chitin", "Silica + CaCO3"],
