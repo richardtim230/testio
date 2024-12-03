@@ -498,9 +498,18 @@ a {
 .close-popup-btn:hover {
   background-color: #45a049;
 }
-#exam-summary {
+/* Timer Styling */
+.timer {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #d32f2f;
   text-align: center;
-  margin: 20px;
+  margin: 10px 0;
+}
+
+/* Summary Section Styling */
+#exam-summary {
+  margin-top: 20px;
 }
 
 #summary-questions {
