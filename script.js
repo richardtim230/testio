@@ -1,3 +1,28 @@
+// Ensure the DOM is loaded before running the script
+document.addEventListener("DOMContentLoaded", () => {
+  const questionImage = document.getElementById("question-image");
+  
+  if (questionImage) {
+    if (questionObj.image) {
+      questionImage.src = questionObj.image;
+      questionImage.classList.remove("hidden");
+    } else {
+      questionImage.classList.add("hidden");
+    }
+  } else {
+    console.warn("Element with id 'question-image' not found.");
+  }
+  
+  // Example button event listener
+  const button = document.getElementById("my-button");
+  if (button) {
+    button.addEventListener("click", () => {
+      console.log("Button clicked");
+    });
+  } else {
+    console.warn("Button with id 'my-button' not found.");
+  }
+});
 
 
 // Predefined access codes for each department
