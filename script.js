@@ -61,6 +61,116 @@ chemistry: [
     ],
     "answer": "A and C above"
   },
+  
+  {
+    "question": "Round off this figure to 3 significant figures: 0.0082001.",
+    "options": ["0.008", "820", "8.200 × 10³", "8.20 × 10⁻²"],
+    "answer": "8.20 × 10⁻²"
+  },
+  {
+    "question": "Perform the following operations and record the answer to the proper number of significant digits (figures): 0.6238 cm × 6.6 cm",
+    "options": ["4.11708 cm²", "4.12 cm²", "4.1 cm²", "0.95 cm²"],
+    "answer": "4.1 cm²"
+  },
+  {
+    "question": "Simplify the expression and record the answer in the proper number of significant figures: (2.586 × 5.8) ÷ 4.186",
+    "options": ["3.558", "3.5", "3.56", "3.6"],
+    "answer": "3.6"
+  },
+  {
+    "question": "An experiment requires 43.7 g of propan-2-ol. If its density is 0.785 g/mL, what volume of the alcohol should be used?",
+    "options": ["34.3 mL", "557 mL", "55.7 mL", "55.669 mL"],
+    "answer": "55.7 mL"
+  },
+  {
+    "question": "The Atlantic Ocean contains 1.35 × 10⁹ km³ of water. What is the volume in litres? (Note: 1 litre = 1 dm³)",
+    "options": [
+      "1.35 × 10²⁷ L",
+      "1.35 × 10²¹ L",
+      "1.35 × 10¹⁸ L",
+      "1.35 × 10³ L"
+    ],
+    "answer": "1.35 × 10²¹ L"
+  },
+  {
+    "question": "In what ways can you minimize determinate errors?",
+    "options": [
+      "Proper calibration of apparatus.",
+      "Running of a blank determination.",
+      "Use of independent method.",
+      "All the three above."
+    ],
+    "answer": "All the three above."
+  },
+  {
+    "question": "What type of reaction does this equation represent? C₂H₄ + Cl₂ → C₂H₄Cl₂",
+    "options": [
+      "Combination Reaction",
+      "Replacement Reaction",
+      "Decomposition Reaction",
+      "Combustion Reaction"
+    ],
+    "answer": "Combination Reaction"
+  },
+  {
+    "question": "Nitrogen gas is the major component of air. A sample of nitrogen gas in a glass bulb weighs 243 mg. What is the mass in SI base units of mass?",
+    "options": [
+      "2.43 × 10⁻¹ g",
+      "2.43 × 10⁻⁴ kg",
+      "0.243 kg",
+      "0.243 g"
+    ],
+    "answer": "2.43 × 10⁻⁴ kg"
+  },
+  {
+    "question": "Which of the following statements is correct about determinate errors?",
+    "options": [
+      "Determinate errors are also known as random errors.",
+      "Determinate errors are irregular and variable in magnitude and sign.",
+      "They cannot in principle be corrected for.",
+      "They are known as systematic errors."
+    ],
+    "answer": "They are known as systematic errors."
+  },
+  {     "question": "A beaker weighed 53.10 g. To the beaker were added 5.348 g of iron pellets and 56.1 g of hydrochloric acid. What was the total mass of the beaker and the mixture (before the reaction)? Express the answer to the correct number of significant figures.",
+    "options": ["115 g", "114.5 g", "114 g", "109 g"],
+    "answer": "114.5 g"
+  },
+  {
+    "question": "The sets of quantum numbers that correctly define the 3p and 5s orbitals are:",
+    "options": [
+      "n = 3, l = 1, mₗ = ±1, 0 and n = 5, l = 0, mₗ = 0",
+      "n = 3, l = 0, mₗ = 0 and n = 5, l = 1, mₗ = ±1, 0",
+      "n = 3, l = 1, mₗ = ±2 and n = 5, l = 0, mₗ = 0",
+      "n = 4, mₗ = 0"
+    ],
+    "answer": "n = 3, l = 1, mₗ = ±1, 0 and n = 5, l = 0, mₗ = 0"
+  },
+  {
+    "question": "(I) 3→1, (II) 3→2, (III) 4→3, (IV) 4→2, and (V) 5→1 are transitions from n’ → n in the emission spectrum of atomic hydrogen. Which of the following sets correctly represent the series?",
+    "options": [
+      "I and III, Balmer, I and III, Lyman, III and V, Paschen.",
+      "II and IV, Lyman, I and V, Balmer, III and V, Paschen.",
+      "III and IV, Paschen, II and V, Balmer, II and IV, Lyman.",
+      "I and V, Lyman, II and IV, Balmer, III only Paschen."
+    ],
+    "answer": "I and V, Lyman, II and IV, Balmer, III and V, Paschen"
+  },
+  {
+    "question": "The ground state electronic configuration of group 16 elements (former group 6) is of the type [X] ns²np⁴ where X is a group 18 element (neon core). Which of the following correctly describes the outer electrons?",
+    "options": [
+      "npₓ², np²ₓ, np⁴, Hund’s rule and Pauli exclusion principle.",
+      "np², np¹, np², Hund’s rule and Heisenberg’s uncertainty principle.",
+      "np², np³, np⁴, Hund’s rule and Heisenberg’s uncertainty principle.",
+      "np³, np², np¹, Hund’s rule and Pauli exclusion principle."
+    ],
+    "answer": "npₓ², npᵧ¹, npᶻ¹, Hund’s rule and Pauli exclusion principle."
+  },
+  {
+    "question": "An element X is found to have an atomic mass of 37.45 amu. Element X has only two isotopes, ³⁷X and ³⁸X. The ³⁷X isotope has a fractional abundance of 0.7721 and an atomic mass of 37.24. What is the fractional abundance of ³⁸X isotope with isotopic mass of 38.10?",
+    "options": ["0.2283", "0.3025", "0.1518", "0.3797"],
+    "answer": "0.2279"
+  }, 
   {
     "question": "Solve the following and record the answer in the correct number of significant figures: (2.568 x 5.8) ÷ 4.186",
     "options": ["3.57", "3.5", "3.6", "3.558"],
