@@ -1004,9 +1004,36 @@ function startExam(department) {
 
 }
 
-let attemptedQuestions = []; // To store attempted questions
+let timerInterval;
+let currentQuestionIndex = 0;
+let currentScore = 0;
+let attemptedQuestions = []; // Tracks attempts
+let selectedQuestions = []; // Holds current test questions
 
-// Display the current question
+// Start the timer
+function startTimer(minutes) {
+  const timerElement = document.getElementById('timer');
+  let remainingTime = minutes * 60; // Convert minutes to seconds
+
+  function updateTimer() {
+    const mins = Math.floor(remainingTime / 60);
+    const secs = remainingTime % 60;
+    timerElement.textContent = `Time Remaining: ${mins}:${secs < 10 ? '0' : ''}${secs}`;
+
+    if (remainingTime <= 0) {
+      clearInterval(timerInterval); // Stop the timer
+      alert('Time is up! Submitting your exam.');
+      displaySummary();
+    }
+
+    remainingTime--;
+  }
+
+  updateTimer(); // Initial call
+  timerInterval = setInterval(updateTimer, 1000); // Update every second
+}
+
+// Display a question
 function displayQuestion() {
   const container = document.getElementById('questions-container');
   container.innerHTML = '';
@@ -1028,15 +1055,15 @@ function displayQuestion() {
     `;
     container.appendChild(questionDiv);
   } else {
-    displaySummary(); // Show the summary when all questions are answered
+    displaySummary();
   }
 }
 
-// Check the user's answer and save the attempt
+// Check the user's answer
 function checkAnswer(selectedOption) {
   const currentQuestion = selectedQuestions[currentQuestionIndex];
 
-  // Save the question attempt
+  // Track the question attempt
   attemptedQuestions.push({
     question: currentQuestion.question,
     selectedAnswer: selectedOption,
@@ -1044,7 +1071,7 @@ function checkAnswer(selectedOption) {
     isCorrect: selectedOption === currentQuestion.answer,
   });
 
-  // Provide feedback and move to the next question
+  // Update the score and give feedback
   if (selectedOption === currentQuestion.answer) {
     currentScore++;
     alert('Correct!');
@@ -1058,17 +1085,19 @@ function checkAnswer(selectedOption) {
 
 // Display the summary
 function displaySummary() {
+  clearInterval(timerInterval); // Stop the timer
+
   const container = document.getElementById('questions-container');
   container.innerHTML = ''; // Clear previous content
 
   const summarySection = document.getElementById('exam-summary');
-  summarySection.classList.remove('hidden'); // Show the summary section
+  summarySection.classList.remove('hidden'); // Show summary section
 
   // Display the score
   const summaryScore = document.getElementById('summary-score');
   summaryScore.innerText = `You scored ${currentScore} out of ${selectedQuestions.length}.`;
 
-  // Display attempted questions with corrections
+  // Display each attempted question
   const summaryQuestions = document.getElementById('summary-questions');
   summaryQuestions.innerHTML = ''; // Clear previous summary
 
@@ -1084,18 +1113,16 @@ function displaySummary() {
   });
 }
 
-// Reset the application for another test
+// Reset for a new test
 function goToHomepage() {
-  clearInterval(timerInterval); // Stop the timer
+  // Reset state
+  clearInterval(timerInterval);
   currentQuestionIndex = 0;
   currentScore = 0;
-  attemptedQuestions = []; // Clear previous attempts
+  attemptedQuestions = [];
 
-  // Hide exam and summary sections
+  // Hide summary and exam sections, show homepage
   document.getElementById('exam-questions').classList.add('hidden');
-  document.getElementById('exam-summary').classList.add('hidden');
-
-  // Show the homepage
   document.getElementById('homepage').classList.remove('hidden');
 }
 
