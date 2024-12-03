@@ -52,7 +52,7 @@ const questions = {
 
   zoology1: [
 
-    { question: 'What is the largest land animal?', options: ['Elephant', 'Giraffe', 'Hippo'], answer: 'Elephant' },
+    { question: 'What is the largest land animal?', options: ['Elephant', 'Giraffe', 'Hippo'], answer: ' "Elephant" ' },
     
     { question: 'Which germ layer is responsible for forming the notochord in triploblastic animals?', options: ['Ectoderm', 'Endoderm', 'Mesoderm', 'Coelom'], answer: 'Mesoderm' },
 { question: 'What distinguishes acoelomates from pseudocoelomates and eucoelomates?', options: ['Presence of blastocoel', 'Absence of coelom', 'True coelom lined by mesoderm', 'Body cavity partly filled by mesoderm'], answer: 'Absence of coelom' },
@@ -831,7 +831,7 @@ function checkAnswer(selectedOption) {
 
   } else {
 
-    alert(`Wrong! The correct answer is ${currentQuestion.answer""}.`);
+    alert(`Wrong! The correct answer is ${currentQuestion.answer}.`);
 
   }
 
