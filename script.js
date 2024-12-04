@@ -73,7 +73,150 @@ chemistry: [
     ],
     "answer": "A and C above"
   },
-  
+
+  {
+    "question": "A nucleus that spontaneously decomposes is said to be:",
+    "options": ["a radionuclide", "radioactive", "reactive", "electropositive"],
+    "answer": "radioactive"
+  },
+  {
+    "question": "______, when it is produced by a nucleus at high speed, is more commonly called a beta particle.",
+    "options": ["Electron", "Neutron", "Nucleon", "Proton"],
+    "answer": "Electron"
+  },
+  {
+    "question": "The net effect of the production of beta particle is to convert:",
+    "options": ["electron to a γ-particle", "neutron to a proton", "proton to neutron", "β-particle to energy"],
+    "answer": "neutron to a proton"
+  },
+  {
+    "question": "When a nucleus undergoes alpha decay, the ________ of the nucleus decreases by four units.",
+    "options": ["mass", "neutron", "proton", "electron"],
+    "answer": "mass"
+  },
+  {
+    "question": "Polonium-216 decays to Pb-212 by emission of an alpha particle. Which of the following is the nuclear equation for this radioactive decay?",
+    "options": [
+      "^{216}_{84}Po → ^{212}_{82}Pb + ^{4}_{2}He",
+      "^{216}_{84}Po → ^{212}_{82}Pb + ^{0}_{-1}e",
+      "^{216}_{84}Po + 2 → ^{212}_{82}Pb + 4",
+      "^{216}_{84}Po + ^{2}_{-1}e → ^{212}_{82}Pb + ^{4}_{2}He"
+    ],
+    "answer": "^{216}_{84}Po → ^{212}_{82}Pb + ^{4}_{2}He"
+  },
+  {
+    "question": "Sulfur trioxide is formed from the reaction of sulfur dioxide and oxygen: SO₂(g) + ½O₂(g) ⇌ SO₃(g). At 1000 K, an equilibrium mixture has partial pressures of 0.562 bar SO₂, 0.101 bar O₂, and 0.332 bar SO₃. What is the equilibrium constant Kₚ for the reaction at this temperature?",
+    "options": ["5.85", "3.46", "1.86", "16.8"],
+    "answer": "5.85"
+  },
+  {
+    "question": "What is the pH of a 0.20 M solution of sodium benzoate, Na(C₆H₅COO)? The Kₐ of benzoic acid, C₆H₅COOH, is 6.5 × 10⁻⁵.",
+    "options": ["5.26", "9.09", "8.74", "11.56"],
+    "answer": "8.74"
+  },
+  {
+    "question": "100.0 mL of 0.15 M aqueous HF (Kₐ = 6.8 × 10⁻⁴) is mixed with 125.0 mL 0.23 M NaF. What is the pH of the resulting solution?",
+    "options": ["2.17", "3.45", "3.17", "3.35"],
+    "answer": "3.35"
+  },
+  {
+    "question": "The reaction: H₂(g) + I₂(g) ⇌ 2HI(g), Kₚ = 50.4 at 448 °C. If a 3.00 L flask initially contains 0.500 moles each of H₂ and I₂, how many moles of HI are present when the contents have reached equilibrium at 448 °C?",
+    "options": ["0.0130 mol", "0.0780 mol", "0.0260 mol", "0.0146 mol"],
+    "answer": "0.0780 mol"
+  },
+  {
+    "question": "The dissociation of phosphorus pentachloride into chlorine and phosphorus trichloride is represented by the equilibrium: PCl₅(g) ⇌ PCl₃(g) + Cl₂(g), Kₚ = 0.015. Which change will increase the number of moles of Cl₂(g) present in this system at equilibrium?",
+    "options": ["Addition of a catalyst", "Increasing the volume of the container", "Increasing the pressure by injecting PCl₅(g)", "Decreasing the temperature"],
+    "answer": "Decreasing the temperature"
+  },
+  {
+    "question": "For which of the following reactions would the yield of products at equilibrium NOT increase with an increase in pressure?",
+    "options": [
+      "N₂(g) + O₂(g) ⇌ 2NO(g)",
+      "Ti(s) + 2Cl₂(g) ⇌ TiCl₄(g)",
+      "2C₂H₄(g) + 2H₂O(g) ⇌ 2C₂H₆O(g)",
+      "4HCl(g) + O₂(g) ⇌ 2H₂O(l) + 2Cl₂(g)"
+    ],
+    "answer": "N₂(g) + O₂(g) ⇌ 2NO(g)"
+  },
+  {
+    "question": "At 400 K, the reaction SO₃(g) ⇌ SO₂(g) + ½O₂(g) has Kₚ = 8.2 × 10⁻⁴. What is Kₚ at 400 K for the following reaction? 2SO₃(g) ⇌ 2SO₂(g) + O₂(g)",
+    "options": ["1.6 × 10⁻³", "8.2 × 10⁻⁴", "6.7 × 10⁻⁷", "2.9 × 10⁻²"],
+    "answer": "6.7 × 10⁻⁷"
+  },
+  {
+    "question": "What is [H₃O⁺] in a solution formed by dissolving 1.00 g NH₄Cl (M = 53.5) in 30.0 mL of 3.00 M NH₃ (Kₐ = 1.8 × 10⁻⁵)?",
+    "options": ["1.15 × 10⁻¹⁰ M", "5.53 × 10⁻¹⁰ M", "2.71 × 10⁻⁹ M", "1.44 × 10⁻¹² M"],
+    "answer": "5.53 × 10⁻¹⁰ M"
+  },
+  {
+    "question": "0.100 mol of HF (Kₐ = 6.6 × 10⁻⁴) is added to water to make 1.00 L of solution. Which statement is correct at equilibrium?",
+    "options": ["[HF] > [F⁻]", "[HF] = [H₃O⁺]", "[H₃O⁺] = 0.100 M", "[H₃O⁺] = [HF]"],
+    "answer": "[HF] > [F⁻]"
+  },
+  {
+    "question": "A sample of SO₂Cl₂ is introduced into a movable piston with the pressure maintained at 1.00 atm. Which changes would decrease the number of moles of SO₂Cl₂(g) present in the piston at equilibrium?",
+    "options": [
+      "The temperature of the system is increased to 500 K",
+      "A sample of Ar(g) is injected into the piston",
+      "Neither I nor II",
+      "Both I and II"
+    ],
+    "answer": "Both I and II"
+  },
+  {
+    "question": "The wavelength of a certain infrared radiation is 0.000000085 m. Write the measurement in terms of an appropriate prefix.",
+    "options": ["8.5 nm", "8.5 cm", "0.85 µm", "85 µm"],
+    "answer": "8.5 nm"
+  },
+  {
+    "question": "Which of the following is true about homogeneous mixtures?",
+    "options": [
+      "They are also known as solutions",
+      "They contain distinct parts",
+      "Cannot be used in chemical reactions",
+      "Have distinct physical properties"
+    ],
+    "answer": "They are also known as solutions"
+  }, 
+
+{
+  "question": "Which of the following is/are true about homogeneous mixtures?\n(i) They are also known as solutions.\n(ii) They have uniform properties throughout a given sample.\n(iii) They contain physically distinct parts with different properties.\n(iv) They cannot be used in chemical reactions.",
+  "options": [
+    "I, II & III",
+    "II only",
+    "III and IV only",
+    "I & II only"
+  ],
+  "answer": "I & II only"
+}, 
+  {
+    "question": "An experiment requires 43.7 g of propanol. Instead of using a balance, a student dispensed the liquid into a measuring cylinder. If the density of propan-2-ol is 0.785 g/cm³, what volume of propanol should be used?",
+    "options": ["34.3 cm³", "55.67 cm³", "5.567 cm³", "1.80 cm³"],
+    "answer": "55.67 cm³"
+  },
+  {
+    "question": "What type of reaction does this equation represent: (CH₃)₃C-OH + Br⁻ → (CH₃)₃C-Br + OH⁻?",
+    "options": [
+      "Combination Reaction",
+      "Decomposition Reaction",
+      "Combustion Reaction",
+      "Replacement Reaction"
+    ],
+    "answer": "Replacement Reaction"
+  },
+  {
+    "question": "Which of the following statements is correct about determinate errors?",
+    "options": [
+      "Determinate errors are also known as random errors.",
+      "Determinate errors are irregular and variable in magnitude and sign.",
+      "Determinate errors are systematic errors.",
+      "Determinate errors are due to fluctuation of temperatures."
+    ],
+    "answer": "Determinate errors are systematic errors."
+  }, 
+
+
   {
     "question": "Round off this figure to 3 significant figures: 0.0082001.",
     "options": ["0.008", "820", "8.200 × 10³", "8.20 × 10⁻²"],
