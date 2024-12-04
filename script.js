@@ -1086,6 +1086,7 @@ biology: [
 let currentScore = 0;
 
 let currentQuestionIndex = 0;
+let attemptedQuestions = [];
 
 let selectedQuestions = [];
 
@@ -1238,6 +1239,43 @@ function displaySummary() {
   `;
 
 }
+
+// Function to start the quiz
+async function startQuiz(numQuestions) {
+  await fetchQuestions();
+  if (!selectQuestions(numQuestions, questionBank)) return; //Error handling
+  // ... (rest of your startQuiz function remains the same) ...
+  document.getElementById('continue-btn').classList.remove('hidden');
+}
+
+// Function to continue the exam
+async function continueExam(numQuestions = 5) { //Defaults to 5
+  await fetchQuestions(); //Fetch questions again.
+  currentQuestionIndex = 0;
+  currentScore = 0;
+  attemptedQuestions = [];
+
+  displayQuestion();
+  document.getElementById('preview-corrections-btn').classList.remove('hidden');
+}
+
+// Function to preview corrections
+function previewCorrections() {
+  displaySummary();
+  document.getElementById('continue-btn').classList.add('hidden');
+}
+
+//Select Questions function
+function selectQuestions(numQuestions, questionBank) {
+  if (!questionBank || questionBank.length < numQuestions) {
+    console.error("Not enough questions in the bank or question bank not defined!");
+    alert("Error: Not enough questions available for the quiz.");
+    return false;
+  }
+  selectedQuestions = questions[department].sort(() => 1.5 - Math.random()).slice(2, 50);
+  return true;
+}
+
 
 // Go Back to Homepage
 
