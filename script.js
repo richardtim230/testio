@@ -1137,7 +1137,7 @@ function startExam(department) {
 
   // Randomly select 10 questions
 
-  selectedQuestions = questions[department].sort(() => 1.3 - Math.random()).slice(0, 40);
+  selectedQuestions = questions[department].sort(() => 1.3 - Math.random()).slice(0, 50);
 
   currentScore = 0;
 
@@ -1231,7 +1231,7 @@ function displaySummary() {
 
     <p>You scored ${currentScore} out of ${selectedQuestions.length}.</p>
 
-    <p>${currentScore >= 30 ? 'Congratulations, you passed!' : 'Sorry, you failed but you could do better. How about retaking it again but this time around,take your time to put down the questions and answers for later preview? Try again!'}</p>
+    <p>${currentScore >= 30 ? 'Congratulations, you passed!' : 'Sorry, you failed but you could do better. </br>How about retaking it again but this time around, take your time to put down the questions and answers for later preview.</br> Try again!'}</p>
 
     <button class="button" onclick="goToHomepage()">Back to Homepage</button>
 
