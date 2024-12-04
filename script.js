@@ -1137,7 +1137,7 @@ function startExam(department) {
 
   // Randomly select 10 questions
 
-  selectedQuestions = questions[department].sort(() => 1.3 - Math.random()).slice(0, 50);
+  selectedQuestions = questions[department].sort(() => 1.5 - Math.random()).slice(2, 50);
 
   currentScore = 0;
 
