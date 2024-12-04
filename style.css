@@ -534,3 +534,40 @@ a {
   color: red;
   font-weight: bold;
 }
+
+/* Basic Styling */
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.button:hover {
+  background-color: #3e8e41; /* Darker green on hover */
+}
+
+/* Specific styling for the continue and preview buttons */
+#continue-btn, #preview-corrections-btn {
+  background-color: #008CBA; /* Blue */
+  margin-left: 10px; /* Space between buttons */
+}
+
+#continue-btn:hover, 
+
+#preview-corrections-btn:hover {
+  background-color: #2196F3; /* Darker blue on hover */
+}
+
+/* Style for hidden elements */
+.hidden {
+  display: none;
+}
