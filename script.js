@@ -1209,7 +1209,7 @@ function checkAnswer(selectedOption) {
 
   } else {
 
-    alert(`Wrong! The correct answer is ${currentQuestion.answer}.`);
+    alert(`Wrong! The correct answer is - ${currentQuestion.answer}.`);
 
   }
 
@@ -1231,7 +1231,7 @@ function displaySummary() {
 
     <p>You scored ${currentScore} out of ${selectedQuestions.length}.</p>
 
-    <p>${currentScore >= 30 ? 'Congratulations, you passed!' : 'Sorry, you failed. Try again!'}</p>
+    <p>${currentScore >= 30 ? 'Congratulations, you passed!' : 'Sorry, you failed but you could do better. How about retaking it again but this time around,take your time to put down the questions and answers for later preview? Try again!'}</p>
 
     <button class="button" onclick="goToHomepage()">Back to Homepage</button>
 
