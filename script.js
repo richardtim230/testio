@@ -1294,7 +1294,8 @@ if ('serviceWorker' in navigator) {
   }
 
 
-// Predefined 20 access codes with varying validity periods (in days)
+
+      // Predefined 20 access codes with varying validity periods (in days)
 const predefinedAccessCodes = [
   { code: "CODE12345", validity: 5 },
   { code: "CODE67890", validity: 10 },
@@ -1318,7 +1319,7 @@ const predefinedAccessCodes = [
   { code: "CODEXYZ12", validity: 9 },
 ];
 
-// Store the predefined codes in local storage (if not already stored)
+// Store the predefined codes in local storage
 if (!localStorage.getItem("accessCodes")) {
   localStorage.setItem("accessCodes", JSON.stringify(predefinedAccessCodes));
 }
@@ -1351,7 +1352,6 @@ function isAccessValid(code) {
     const now = new Date();
     const daysSinceLastLogin = Math.floor((now - lastLogin) / (1000 * 60 * 60 * 24));
 
-    // Code is valid if it hasn't expired
     return daysSinceLastLogin <= found.validity;
   }
 
@@ -1363,8 +1363,7 @@ function initialize() {
   const lastLogin = localStorage.getItem("lastLogin");
   const now = new Date();
 
-  // Show overlay if no login date exists or 30 days have passed since last login
-  if (!lastLogin || now - new Date(lastLogin) > 30 * 24 * 60 * 60 * 1000) {
+  if (!lastLogin || new Date() - new Date(lastLogin) > 30 * 24 * 60 * 60 * 1000) {
     showOverlay();
   } else {
     hideOverlay();
@@ -1389,28 +1388,22 @@ authForm.addEventListener("submit", e => {
   const accessCode = accessCodeInput.value.trim();
 
   if (isRegistering) {
-    // Registration logic
+    // Register new user
     const fullName = document.getElementById("full-name").value.trim();
     const email = document.getElementById("email").value.trim();
 
     if (fullName && email && accessCode) {
       const codes = JSON.parse(localStorage.getItem("accessCodes")) || [];
-      const existingCode = codes.find(c => c.code === accessCode);
-
-      if (!existingCode) {
-        codes.push({ code: accessCode, validity: 30 }); // New code with 30-day validity
-        localStorage.setItem("accessCodes", JSON.stringify(codes));
-        alert("Registration successful! You can now log in.");
-        isRegistering = false;
-        toggleLink.click(); // Switch to login mode
-      } else {
-        alert("Access code already exists. Please use a different code.");
-      }
+      codes.push({ code: accessCode, validity: 30 });
+      localStorage.setItem("accessCodes", JSON.stringify(codes));
+      alert("Registered successfully!");
+      isRegistering = false;
+      toggleLink.click(); // Switch to login
     } else {
       alert("Please fill in all fields!");
     }
   } else {
-    // Login logic
+    // Log in
     if (isAccessValid(accessCode)) {
       localStorage.setItem("lastLogin", new Date().toISOString());
       alert("Logged in successfully!");
