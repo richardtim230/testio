@@ -1294,125 +1294,89 @@ if ('serviceWorker' in navigator) {
   }
 
 
+// app.js
 
-      // Predefined 20 access codes with varying validity periods (in days)
-const predefinedAccessCodes = [
-  { code: "CODE12345", validity: 5 },
-  { code: "CODE67890", validity: 10 },
-  { code: "CODE11111", validity: 15 },
-  { code: "CODE22222", validity: 20 },
-  { code: "CODE33333", validity: 25 },
-  { code: "CODE44444", validity: 30 },
-  { code: "CODE55555", validity: 7 },
-  { code: "CODE66666", validity: 14 },
-  { code: "CODE77777", validity: 21 },
-  { code: "CODE88888", validity: 28 },
-  { code: "CODE99999", validity: 3 },
-  { code: "CODE00000", validity: 12 },
-  { code: "CODEABCDE", validity: 18 },
-  { code: "CODEFGHIJ", validity: 22 },
-  { code: "CODEKLMNO", validity: 8 },
-  { code: "CODEPQRST", validity: 16 },
-  { code: "CODEUVWXY", validity: 24 },
-  { code: "CODEZ1234", validity: 4 },
-  { code: "CODE56789", validity: 6 },
-  { code: "CODEXYZ12", validity: 9 },
-];
-
-// Store the predefined codes in local storage
-if (!localStorage.getItem("accessCodes")) {
-  localStorage.setItem("accessCodes", JSON.stringify(predefinedAccessCodes));
-}
-
-// DOM Elements
-const authOverlay = document.getElementById("auth-overlay");
-const authForm = document.getElementById("auth-form");
-const registrationFields = document.getElementById("registration-fields");
-const authTitle = document.getElementById("auth-title");
-const toggleText = document.getElementById("toggle-text");
-const toggleLink = document.getElementById("toggle-link");
-const accessCodeInput = document.getElementById("access-code");
-
-// Utility functions
-function showOverlay() {
-  authOverlay.style.display = "flex";
-}
-
-function hideOverlay() {
-  authOverlay.style.display = "none";
-}
-
-// Check login validity
-function isAccessValid(code) {
-  const codes = JSON.parse(localStorage.getItem("accessCodes")) || [];
-  const found = codes.find(c => c.code === code);
-
-  if (found) {
-    const lastLogin = new Date(localStorage.getItem("lastLogin"));
-    const now = new Date();
-    const daysSinceLastLogin = Math.floor((now - lastLogin) / (1000 * 60 * 60 * 24));
-
-    return daysSinceLastLogin <= found.validity;
+// Generate random codes and their validity
+const generateAccessCodes = () => {
+  const codes = [];
+  for (let i = 0; i < 20; i++) {
+    const code = Math.random().toString(36).substring(2, 10).toUpperCase();
+    const validityDays = Math.floor(Math.random() * 30) + 1;
+    codes.push({ code, validity: validityDays });
   }
+  localStorage.setItem('accessCodes', JSON.stringify(codes));
+};
 
-  return false;
+// Initialize access codes if not already generated
+if (!localStorage.getItem('accessCodes')) {
+  generateAccessCodes();
 }
 
-// Initialize the overlay logic
-function initialize() {
-  const lastLogin = localStorage.getItem("lastLogin");
-  const now = new Date();
+const authOverlay = document.getElementById('auth-overlay');
+const authForm = document.getElementById('auth-form');
+const registerFields = document.getElementById('register-fields');
+const authTitle = document.getElementById('auth-title');
+const toggleLink = document.getElementById('toggle-link');
+const toggleAuth = document.getElementById('toggle-auth');
 
-  if (!lastLogin || new Date() - new Date(lastLogin) > 30 * 24 * 60 * 60 * 1000) {
-    showOverlay();
-  } else {
-    hideOverlay();
+let isRegister = false;
+
+// Check login status
+const checkLoginStatus = () => {
+  const lastLogin = localStorage.getItem('lastLogin');
+  if (lastLogin) {
+    const daysSinceLastLogin = (Date.now() - new Date(lastLogin)) / (1000 * 60 * 60 * 24);
+    if (daysSinceLastLogin < 30) {
+      authOverlay.style.display = 'none';
+    }
   }
-}
+};
 
-// Toggle between sign-in and registration
-let isRegistering = false;
-
-toggleLink.addEventListener("click", () => {
-  isRegistering = !isRegistering;
-  registrationFields.classList.toggle("hidden", !isRegistering);
-  authTitle.textContent = isRegistering ? "Register" : "Sign In";
-  toggleText.innerHTML = isRegistering
-    ? 'Already have an account? <span>Sign In</span>'
-    : 'Don\'t have an account? <span>Register here</span>';
+// Switch between login and registration
+toggleAuth.addEventListener('click', () => {
+  isRegister = !isRegister;
+  registerFields.style.display = isRegister ? 'block' : 'none';
+  authTitle.textContent = isRegister ? 'Register' : 'Sign In';
+  toggleAuth.textContent = isRegister ? 'Sign in here' : 'Register here';
 });
 
 // Handle form submission
-authForm.addEventListener("submit", e => {
+authForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const accessCode = accessCodeInput.value.trim();
+  const accessCode = document.getElementById('access-code').value.trim();
+  const accessCodes = JSON.parse(localStorage.getItem('accessCodes')) || [];
 
-  if (isRegistering) {
-    // Register new user
-    const fullName = document.getElementById("full-name").value.trim();
-    const email = document.getElementById("email").value.trim();
+  if (isRegister) {
+    const fullName = document.getElementById('full-name').value.trim();
+    const email = document.getElementById('email').value.trim();
 
-    if (fullName && email && accessCode) {
-      const codes = JSON.parse(localStorage.getItem("accessCodes")) || [];
-      codes.push({ code: accessCode, validity: 30 });
-      localStorage.setItem("accessCodes", JSON.stringify(codes));
-      alert("Registered successfully!");
-      isRegistering = false;
-      toggleLink.click(); // Switch to login
-    } else {
-      alert("Please fill in all fields!");
+    if (!fullName || !email || !accessCode) {
+      alert('Please fill all fields!');
+      return;
     }
+
+    const newCode = { code: accessCode, validity: 30 };
+    accessCodes.push(newCode);
+    localStorage.setItem('accessCodes', JSON.stringify(accessCodes));
+    alert('Registration successful! Please log in.');
+    isRegister = false;
+    registerFields.style.display = 'none';
+    authTitle.textContent = 'Sign In';
   } else {
-    // Log in
-    if (isAccessValid(accessCode)) {
-      localStorage.setItem("lastLogin", new Date().toISOString());
-      alert("Logged in successfully!");
-      hideOverlay();
+    const validCode = accessCodes.find((item) => item.code === accessCode);
+    if (validCode) {
+      const daysSinceGenerated = (Date.now() - new Date(validCode.generatedDate || Date.now())) / (1000 * 60 * 60 * 24);
+      if (daysSinceGenerated <= validCode.validity) {
+        alert('Login successful!');
+        localStorage.setItem('lastLogin', new Date());
+        authOverlay.style.display = 'none';
+      } else {
+        alert('Access code expired. Please register for a new code.');
+      }
     } else {
-      alert("Invalid or expired access code!");
+      alert('Invalid access code!');
     }
   }
 });
 
-// Run initialization
-initialize();
+checkLoginStatus();
