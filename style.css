@@ -759,6 +759,12 @@ button:hover {
   color: #6e8efb;
 }
 
+  #student-details {
+    margin-top: 20px;
+    line-height: 1.8;
+}
+
+
 /* Animation */
 @keyframes fadeIn {
   from {
