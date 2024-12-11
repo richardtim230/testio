@@ -40,32 +40,71 @@
 
   
   <!-- Authentication Overlay -->
-  <div id="auth-overlay" class="overlay">
-    <div class="auth-container">
-      <!-- Title -->
-      <h2 id="auth-title">Sign In</h2>
 
-      <!-- Authentication Form -->
-      <form id="auth-form">
-        <!-- Registration Fields -->
-        <div id="registration-fields" class="hidden">
-          <input type="text" id="full-name" placeholder="Full Name" />
-          <input type="email" id="email" placeholder="Valid Email" />
+
+    <div id="overlay">
+
+        <div id="login-box">
+
+            <h2>Login</h2>
+
+            <input type="text" id="userId" placeholder="Enter User ID">
+
+            <button onclick="login()">Login</button>
+
+            <button onclick="showRegister()">Register</button>
+
         </div>
-        
-        <!-- Access Code Input -->
-        <input type="text" id="access-code" placeholder="Access Code" required />
 
-        <!-- Submit Button -->
-        <button type="submit" id="submit-btn">Sign In</button>
+        <div id="register-box" class="hidden">
 
-        <!-- Toggle Link -->
-        <p id="toggle-text">
-          Don't have an account? <span id="toggle-link">Register here</span>
-        </p>
-      </form>
+            <h2>Register</h2>
+
+            <input type="text" id="regName" placeholder="Full Name">
+
+            <input type="text" id="regDepartment" placeholder="Department">
+
+            <input type="text" id="regLevel" placeholder="Level">
+
+            <input type="text" id="regCourses" placeholder="Courses">
+
+            <button onclick="register()">Submit</button>
+
+            <button class="back-btn" onclick="showLogin()">Back to Login</button>
+
+        </div>
+
+        <div id="admin-box" class="hidden">
+
+            <h2>Admin Panel</h2>
+
+            <input type="text" id="activateUserId" placeholder="Enter User ID to Activate">
+
+            <button onclick="activateUser()">Activate User</button>
+
+            <br>
+
+            <label for="expirationDays">Set Expiration Days:</label>
+
+            <input type="number" id="expirationDays" min="1" value="7">
+
+            <button onclick="updateExpirationDays()">Update Expiration Days</button>
+
+            <button class="back-btn" onclick="showLogin()">Back to Login</button>
+
+        </div>
+
     </div>
-  </div>
+
+    <div id="app" class="hidden">
+
+        <h1 id="welcomeMessage"></h1>
+
+        <p id="userDetails"></p>
+
+    </div>
+
+
   
 
 
