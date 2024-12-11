@@ -646,6 +646,12 @@ button:hover {
   box-sizing: border-box;
 }
 
+/* Main application (no styling effect) */
+#app {
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  text-align: center;
+  }
 
 /* Fullscreen overlay */
 #overlay {
@@ -654,7 +660,7 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0.3, 0.4, 0.5, 5);
+  background: rgba(0, 0.4, 0.5, 1);
   display: flex;
   justify-content: center;
   align-items: center;
