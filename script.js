@@ -1,3 +1,129 @@
+// Reserved User IDs (Admin Panel List)
+const reservedAdminIDs = [
+    "userA101", "userA102", "userA103", "userA104", "userA105",
+    "userA106", "userA107", "userA108", "userA109", "userA110"
+];
+
+// Save User Data to Local Storage
+function saveUserData(userId, userData) {
+    const storageKey = `myApp/users/${userId}`;
+    localStorage.setItem(storageKey, JSON.stringify(userData));
+    console.log(`Saved: ${storageKey}`);
+}
+
+// Retrieve User Data from Local Storage
+function getUserData(userId) {
+    const storageKey = `myApp/users/${userId}`;
+    const userData = localStorage.getItem(storageKey);
+    console.log(`Retrieved: ${storageKey} - ${userData}`);
+    return userData ? JSON.parse(userData) : null;
+}
+
+// Registration Function
+function register() {
+    const name = document.getElementById("regName").value.trim();
+    const department = document.getElementById("regDepartment").value.trim();
+    const level = document.getElementById("regLevel").value.trim();
+    const courses = document.getElementById("regCourses").value.trim();
+
+    if (!name || !department || !level || !courses) {
+        alert("All fields are required!");
+        return;
+    }
+
+    if (confirm("Registration costs N1500. Proceed?")) {
+        const userId = `user${Math.floor(1000 + Math.random() * 9000)}`;
+        const userData = {
+            fullName: name,
+            department,
+            level,
+            courses,
+            createdAt: new Date().toISOString(),
+            isActive: false,
+        };
+
+        saveUserData(userId, userData);
+
+        const message = `New Registration:\nName: ${name}\nDepartment: ${department}\nLevel: ${level}\nCourses: ${courses}\nGenerated User ID: ${userId}`;
+        window.open(`https://wa.me/2349155127634?text=${encodeURIComponent(message)}`);
+
+        alert(`Registration successful! Your User ID is ${userId} (Pending Activation).`);
+        showLogin();
+    }
+}
+
+// Login Function
+function login() {
+    const userId = document.getElementById("userId").value.trim();
+    const userDetails = getUserData(userId);
+
+    if (userDetails && reservedAdminIDs.includes(userId)) {
+        if (userDetails.isActive) {
+            alert("Welcome!");
+            document.getElementById("welcomeMessage").innerText = `Welcome ${userDetails.fullName}!`;
+            document.getElementById("userDetails").innerText = `
+                Full Name: ${userDetails.fullName}
+                Department: ${userDetails.department}
+                Level: ${userDetails.level}
+                Courses: ${userDetails.courses}
+            `;
+
+            document.getElementById("overlay").classList.add("hidden");
+            document.getElementById("app").classList.remove("hidden");
+
+            // Auto-hide user details after 10 seconds
+            setTimeout(() => {
+                document.getElementById("app").classList.add("hidden");
+            }, 10000);
+        } else {
+            alert("User found but not activated! Please contact the admin.");
+        }
+    } else {
+        alert("Invalid User ID or not found. Please re-register.");
+        showRegister();
+    }
+}
+
+// Admin Activation Function
+function activateUser() {
+    const userId = document.getElementById("activateUserId").value.trim();
+    const userDetails = getUserData(userId);
+
+    if (userDetails) {
+        userDetails.isActive = true;
+        saveUserData(userId, userDetails);
+        alert(`User ID ${userId} has been activated!`);
+    } else {
+        alert("User ID not found!");
+    }
+}
+
+// Cross-Check Function
+function crossCheckUser() {
+    const userId = document.getElementById("checkUserId").value.trim();
+    const userDetails = getUserData(userId);
+
+    if (userDetails && reservedAdminIDs.includes(userId)) {
+        activateUser(userId);
+        alert(`User ID ${userId} matched and activated.`);
+    } else {
+        alert("User ID not found in the Admin Panel or Local Storage!");
+    }
+}
+
+// Utility Navigation Functions
+function showRegister() {
+    document.getElementById("login-box").classList.add("hidden");
+    document.getElementById("register-box").classList.remove("hidden");
+}
+
+function showLogin() {
+    document.getElementById("register-box").classList.add("hidden");
+    document.getElementById("admin-box").classList.add("hidden");
+    document.getElementById("login-box").classList.remove("hidden");
+}
+
+
 // Show the popup when the page loads
 window.onload = function () {
   const popup = document.getElementById('instructionPopup');
@@ -1287,135 +1413,3 @@ function goToHomepage() {
 
 }
 
-
-  // Reserved User IDs (Stored on Admin Panel)
-const reservedAdminIDs = [
-    "user8068", "user5011", "userA103", "userA104", "userA105",
-    "user3344", "userA107", "userA108", "userA109", "userA110"
-];
-
-// ** LocalStorage Data Management **
-
-// Save User Data
-function saveUserData(userId, userData) {
-    const storageKey = `myApp/users/${userId}`;
-    localStorage.setItem(storageKey, JSON.stringify(userData));
-    console.log(`Saved: ${storageKey}`);
-}
-
-// Retrieve User Data
-function getUserData(userId) {
-    const storageKey = `myApp/users/${userId}`;
-    const userData = localStorage.getItem(storageKey);
-    return userData ? JSON.parse(userData) : null;
-}
-
-// Delete User Data (Optional)
-function deleteUserData(userId) {
-    const storageKey = `myApp/users/${userId}`;
-    localStorage.removeItem(storageKey);
-    console.log(`Deleted: ${storageKey}`);
-}
-
-// ** Register User Function **
-function register() {
-    const name = document.getElementById("regName").value.trim();
-    const department = document.getElementById("regDepartment").value.trim();
-    const level = document.getElementById("regLevel").value.trim();
-    const courses = document.getElementById("regCourses").value.trim();
-
-    if (!name || !department || !level || !courses) {
-        alert("All fields are required!");
-        return;
-    }
-
-    if (confirm("Registration costs N1500. Proceed?")) {
-        const userId = `user${Math.floor(1000 + Math.random() * 9000)}`;
-        const userData = {
-            fullName: name,
-            department,
-            level,
-            courses,
-            createdAt: new Date().toISOString(),
-            isActive: false,
-        };
-
-        // Save User to Local Storage
-        saveUserData(userId, userData);
-
-        // Send to WhatsApp (Optional)
-        const message = `New Registration:\nName: ${name}\nDepartment: ${department}\nLevel: ${level}\nCourses: ${courses}\nGenerated User ID: ${userId}`;
-        window.open(`https://wa.me/2349155127634?text=${encodeURIComponent(message)}`);
-
-        alert(`Registration successful! Your User ID is ${userId} (Pending Activation).`);
-        showLogin();
-    }
-}
-
-// ** Login Function **
-function login() {
-    const userId = document.getElementById("userId").value.trim();
-    const userDetails = getUserData(userId);
-
-    if (userDetails && userDetails.isActive && reservedAdminIDs.includes(userId)) {
-        alert("Welcome!");
-        document.getElementById("welcomeMessage").innerText = `Welcome ${userDetails.fullName}!`;
-        document.getElementById("userDetails").innerText = `
-            Full Name: ${userDetails.fullName}
-            Department: ${userDetails.department}
-            Level: ${userDetails.level}
-            Courses: ${userDetails.courses}
-        `;
-
-        document.getElementById("overlay").classList.add("hidden");
-        document.getElementById("app").classList.remove("hidden");
-
-        // Auto-hide user details after 10 seconds
-        setTimeout(() => {
-            document.getElementById("app").classList.add("hidden");
-        }, 10000);
-    } else {
-        alert("Invalid User ID or Details Not Found. Please Re-register.");
-        showRegister();
-    }
-}
-
-// ** Admin Functions **
-
-// Activate User
-function activateUser() {
-    const userId = document.getElementById("activateUserId").value.trim();
-    const userDetails = getUserData(userId);
-
-    if (userDetails) {
-        userDetails.isActive = true;
-        saveUserData(userId, userDetails); // Save Back to Local Storage
-        alert(`User ID ${userId} has been activated!`);
-    } else {
-        alert("User ID not found!");
-    }
-}
-
-// Cross-Check User ID
-function crossCheckUser() {
-    const userId = document.getElementById("checkUserId").value.trim();
-
-    if (reservedAdminIDs.includes(userId) && getUserData(userId)) {
-        activateUser(userId);
-        alert(`User ID ${userId} matched and activated.`);
-    } else {
-        alert("User ID not found in the Admin Panel or Local Storage!");
-    }
-}
-
-// ** Navigation Functions **
-function showRegister() {
-    document.getElementById("login-box").classList.add("hidden");
-    document.getElementById("register-box").classList.remove("hidden");
-}
-
-function showLogin() {
-    document.getElementById("register-box").classList.add("hidden");
-    document.getElementById("admin-box").classList.add("hidden");
-    document.getElementById("login-box").classList.remove("hidden");
-}
