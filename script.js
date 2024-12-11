@@ -1296,7 +1296,7 @@ if ('serviceWorker' in navigator) {
 
 // Predefined Reserved IDs (Admin Panel)
 const reservedAdminIDs = [
-    "userA101", "userA102", "user8311", "userA104", "userA105",
+    "userA101", "user3466", "user8311", "userA104", "userA105",
     "userA106", "userA107", "userA108", "userA109", "userA110"
 ];
 
