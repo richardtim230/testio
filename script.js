@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginBox = document.getElementById("login-box");
   const registerBox = document.getElementById("register-box");
   const welcomePopup = document.getElementById("welcome-popup");
-  const app = document.getElementById("app");
+  const app = document.getElementById("homepage");
 
   const loginBtn = document.getElementById("login-btn");
   const registerBtn = document.getElementById("register-btn");
@@ -24,9 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const welcomeMessage = document.getElementById("welcome-message");
 
   const activeUserIDs = ["AG0R02", "67890"]; // Admin-activated user IDs
-  const morningMessages = ["Good morning", "Rise and shine", "Hello! How was your night?"];
-  const afternoonMessages = ["Good afternoon", "Hope you're having a productive day!", "Keep shining!"];
-  const eveningMessages = ["Good evening", "Hope your day was great!", "Relax, you did well today!"];
 
   function generateUserID() {
     return Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -34,9 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getGreeting() {
     const hour = new Date().getHours();
-    if (hour < 12) return morningMessages[Math.floor(Math.random() * morningMessages.length)];
-    if (hour < 18) return afternoonMessages[Math.floor(Math.random() * afternoonMessages.length)];
-    return eveningMessages[Math.floor(Math.random() * eveningMessages.length)];
+    if (hour < 12) return "Good morning!";
+    if (hour < 18) return "Good afternoon!";
+    return "Good evening!";
   }
 
   loginBtn.addEventListener("click", () => {
@@ -104,12 +101,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       localStorage.setItem("userData", JSON.stringify(userData));
 
+      // Send all details to WhatsApp
+      const whatsappMessage = `
+        Registration Details:
+        - Full Name: ${userData.fullName}
+        - Department: ${userData.department}
+        - Level: ${userData.level}
+        - Courses: ${userData.courses}
+        - User ID: ${userData.userID}
+      `;
+
       alert(`Your User ID is ${userID}. Contact admin for activation.`);
 
       window.open(
-        `https://wa.me/2349155127634?text=${encodeURIComponent(
-          `Hi, my User ID is ${userID}. Please activate my account.`
-        )}`,
+        `https://wa.me/2349155127634?text=${encodeURIComponent(whatsappMessage)}`,
         "_blank"
       );
 
@@ -121,11 +126,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   continueBtn.addEventListener("click", () => {
-    welcomePopup.classList.add("hidden");
-    overlay.classList.add("hidden");
-    app.classList.remove("hidden");
+    // Hide overlay and show the main application
+    overlay.style.display = "none"; // Completely hide the overlay
+    app.style.display = "block"; // Display the main app content
   });
 });
+
 
 
 // Show the popup when the page loads
