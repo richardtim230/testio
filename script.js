@@ -1,6 +1,6 @@
 // Reserved User IDs (Admin Panel List)
 const reservedAdminIDs = [
-    "userA101", "userA102", "userA103", "userA104", "userA105",
+    "userA101", "user3828", "userA103", "userA104", "userA105",
     "userA106", "userA107", "userA108", "userA109", "userA110"
 ];
 
