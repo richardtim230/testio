@@ -586,7 +586,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  
 }
 
 /* Authentication Container */
@@ -640,44 +640,37 @@ button:hover {
 
 
 /* Overlay Styling */
+
 #overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85); /* Dark Transparent Background */
-    backdrop-filter: blur(8px); /* Frosted Glass Effect */
+    background: linear-gradient(135deg, #6e8efb, #a777e3);    
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Above everything */
+    z-index: 1000;
 }
 
-#login-box, #register-box, #admin-box {
+#login-box, #register-box, #welcome-popup {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     border-radius: 12px;
-    padding: 40px;
-    width: 350px;
+    padding: 30px 40px;
     text-align: center;
+    width: 350px;
     animation: fadeIn 0.7s ease-in-out;
-    color: white;
 }
 
-.hidden {
-    display: none;
-}
-
-/* Titles */
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-/* Input Fields */
 input {
-    width: 90%;
+    width: 100%;
     margin: 10px 0;
     padding: 10px;
     font-size: 16px;
@@ -691,11 +684,10 @@ input::placeholder {
     color: #ddd;
 }
 
-/* Buttons */
 button {
-    width: 90%;
+    width: 100%;
     padding: 12px;
-    margin: 10px 0;
+    margin-top: 10px;
     background: linear-gradient(135deg, #6e8efb, #a777e3);
     border: none;
     border-radius: 6px;
@@ -710,29 +702,41 @@ button:hover {
     background: linear-gradient(135deg, #a777e3, #6e8efb);
 }
 
-/* Back Button */
-.back-btn {
-    background: transparent;
-    color: white;
-    margin-top: 5px;
+.hidden {
+    display: none;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
     border: 2px solid white;
-    font-weight: bold;
-    transition: all 0.3s ease;
 }
 
-.back-btn:hover {
-    background: white;
-    color: #6e8efb;
-}
-
-/* Main Application Styles */
 #app {
-    padding: 30px;
     text-align: center;
-    color: black; /* Main Application Text */
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    color: white;
+    width: 400px;
+    animation: fadeIn 0.7s ease-in-out;
 }
 
-/* Animations */
+#student-details {
+    margin-top: 20px;
+    line-height: 1.8;
+}
+
+/* Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -743,3 +747,4 @@ button:hover {
         transform: translateY(0);
     }
 }
+
