@@ -1287,17 +1287,11 @@ function goToHomepage() {
 
 }
 
-if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(() => console.log('Service Worker Registered'))
-        .catch((error) => console.error('Service Worker Registration Failed:', error));
-  }
-
 
   // Reserved User IDs (Stored on Admin Panel)
 const reservedAdminIDs = [
     "userA101", "user5011", "userA103", "userA104", "userA105",
-    "userA106", "userA107", "userA108", "userA109", "userA110"
+    "user3344", "userA107", "userA108", "userA109", "userA110"
 ];
 
 // ** LocalStorage Data Management **
