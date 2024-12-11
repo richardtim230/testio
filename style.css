@@ -1,140 +1,3 @@
-/* Reset some basics */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
-#overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#login-box, #register-box {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    padding: 30px 40px;
-    text-align: center;
-    width: 350px;
-    animation: fadeIn 0.7s ease-in-out;
-}
-
-h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-input {
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-}
-
-input::placeholder {
-    color: #ddd;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    background: linear-gradient(135deg, #a777e3, #6e8efb);
-}
-
-.hidden {
-    display: none;
-}
-
-#app {
-    text-align: center;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    color: white;
-    width: 400px;
-    animation: fadeIn 0.7s ease-in-out;
-}
-
-#userDetails {
-    margin-top: 20px;
-    line-height: 1.8;
-}
-
-/* Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* Add styles for Back to Login button */
-
-.back-btn {
-
-    background: transparent;
-
-    color: white;
-
-    margin-top: 5px;
-
-    border: 2px solid white;
-
-    font-weight: bold;
-
-    transition: all 0.3s ease;
-
-}
-
-.back-btn:hover {
-
-    background: white;
-
-    color: #6e8efb;
-
-}
-
-/* Keep existing styles */
-
-
 
 
 /* General Reset */
@@ -774,3 +637,109 @@ button:hover {
 #toggle-text span:hover {
   text-decoration: underline;
   }
+
+
+/* Overlay Styling */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Dark Transparent Background */
+    backdrop-filter: blur(8px); /* Frosted Glass Effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Above everything */
+}
+
+#login-box, #register-box, #admin-box {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 40px;
+    width: 350px;
+    text-align: center;
+    animation: fadeIn 0.7s ease-in-out;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Titles */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+input {
+    width: 90%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+input::placeholder {
+    color: #ddd;
+}
+
+/* Buttons */
+button {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #a777e3, #6e8efb);
+}
+
+/* Back Button */
+.back-btn {
+    background: transparent;
+    color: white;
+    margin-top: 5px;
+    border: 2px solid white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: white;
+    color: #6e8efb;
+}
+
+/* Main Application Styles */
+#app {
+    padding: 30px;
+    text-align: center;
+    color: black; /* Main Application Text */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
