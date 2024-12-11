@@ -1290,7 +1290,7 @@ function goToHomepage() {
 
   // Reserved User IDs (Stored on Admin Panel)
 const reservedAdminIDs = [
-    "userA101", "user5011", "userA103", "userA104", "userA105",
+    "user8068", "user5011", "userA103", "userA104", "userA105",
     "user3344", "userA107", "userA108", "userA109", "userA110"
 ];
 
