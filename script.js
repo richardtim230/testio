@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const welcomeMessage = document.getElementById("welcome-message");
 
   const activeUserIDs = ["AG0R02", "67890"]; // Admin-activated user IDs
+  const morningMessages = ["Good morning", "Rise and shine", "Hello! How was your night?"];
+  const afternoonMessages = ["Good afternoon", "Hope you're having a productive day!", "Keep shining!"];
+  const eveningMessages = ["Good evening", "Hope your day was great!", "Relax, you did well today!"];
 
   function generateUserID() {
     return Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -31,10 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getGreeting() {
     const hour = new Date().getHours();
-    if (hour < 12) return "Good morning!";
-    if (hour < 18) return "Good afternoon!";
-    return "Good evening!";
-  }
+    if (hour < 12) return morningMessages[Math.floor(Math.random() * morningMessages.length)];
+    if (hour < 18) return afternoonMessages[Math.floor(Math.random() * afternoonMessages.length)];
+    return eveningMessages[Math.floor(Math.random() * eveningMessages.length)];
+    }
 
   loginBtn.addEventListener("click", () => {
     const userId = userIdInput.value.trim();
@@ -130,6 +133,18 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.style.display = "none"; // Completely hide the overlay
     app.style.display = "block"; // Display the main app content
   });
+  
+    // Expiry Logic
+  const expiryDays = 7;
+  const currentDate = new Date();
+  const savedDate = localStorage.getItem("loginDate");
+
+  if (savedDate && (currentDate - new Date(savedDate)) / (1000 * 60 * 60 * 24) > expiryDays) {
+    alert("Your ID has expired.");
+  } else {
+    localStorage.setItem("loginDate", currentDate);
+}
+  
 });
 
 
