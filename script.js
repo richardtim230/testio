@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const profilePhoto = document.getElementById("profile-photo");
   const welcomeMessage = document.getElementById("welcome-message");
 
-  const activeUserIDs = ["12345", "67890"]; // Admin-activated user IDs
+  const activeUserIDs = ["AG0R02", "67890"]; // Admin-activated user IDs
   const morningMessages = ["Good morning", "Rise and shine", "Hello! How was your night?"];
   const afternoonMessages = ["Good afternoon", "Hope you're having a productive day!", "Keep shining!"];
   const eveningMessages = ["Good evening", "Hope your day was great!", "Relax, you did well today!"];
