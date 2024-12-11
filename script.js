@@ -1294,89 +1294,144 @@ if ('serviceWorker' in navigator) {
   }
 
 
-// app.js
+// Predefined Reserved IDs (Admin Panel)
+const reservedAdminIDs = [
+    "userA101", "userA102", "user8311", "userA104", "userA105",
+    "userA106", "userA107", "userA108", "userA109", "userA110"
+];
 
-// Generate random codes and their validity
-const generateAccessCodes = () => {
-  const codes = [];
-  for (let i = 0; i < 20; i++) {
-    const code = Math.random().toString(36).substring(2, 10).toUpperCase();
-    const validityDays = Math.floor(Math.random() * 30) + 1;
-    codes.push({ code, validity: validityDays });
-  }
-  localStorage.setItem('accessCodes', JSON.stringify(codes));
-};
+// Load Registered Users from Local Storage
+let users = JSON.parse(localStorage.getItem("users")) || {};
 
-// Initialize access codes if not already generated
-if (!localStorage.getItem('accessCodes')) {
-  generateAccessCodes();
+// Default Expiration Days (Admin-Configurable)
+let expirationDays = localStorage.getItem("expirationDays") || 7;
+
+// ** Check ID Expiration Logic **
+function checkExpiration(userId) {
+    const user = users[userId];
+    if (!user || !user.isActive) return false;
+
+    const createdAt = new Date(user.createdAt);
+    const now = new Date();
+    const diffInDays = Math.floor((now - createdAt) / (1000 * 60 * 60 * 24));
+
+    return diffInDays <= expirationDays;
 }
 
-const authOverlay = document.getElementById('auth-overlay');
-const authForm = document.getElementById('auth-form');
-const registerFields = document.getElementById('register-fields');
-const authTitle = document.getElementById('auth-title');
-const toggleLink = document.getElementById('toggle-link');
-const toggleAuth = document.getElementById('toggle-auth');
+// ** Login Function with Local Storage Check **
+function login() {
+    const userId = document.getElementById("userId").value.trim();
 
-let isRegister = false;
+    // Validate against local storage only
+    if (users[userId] && reservedAdminIDs.includes(userId) && checkExpiration(userId)) {
+        const userDetails = users[userId];
 
-// Check login status
-const checkLoginStatus = () => {
-  const lastLogin = localStorage.getItem('lastLogin');
-  if (lastLogin) {
-    const daysSinceLastLogin = (Date.now() - new Date(lastLogin)) / (1000 * 60 * 60 * 24);
-    if (daysSinceLastLogin < 30) {
-      authOverlay.style.display = 'none';
-    }
-  }
-};
+        alert("Welcome!");
+        document.getElementById("welcomeMessage").innerText = `Welcome ${userDetails.fullName}!`;
+        document.getElementById("userDetails").innerText = `
+            Full Name: ${userDetails.fullName}
+            Department: ${userDetails.department}
+            Level: ${userDetails.level}
+            Courses: ${userDetails.courses}
+        `;
 
-// Switch between login and registration
-toggleAuth.addEventListener('click', () => {
-  isRegister = !isRegister;
-  registerFields.style.display = isRegister ? 'block' : 'none';
-  authTitle.textContent = isRegister ? 'Register' : 'Sign In';
-  toggleAuth.textContent = isRegister ? 'Sign in here' : 'Register here';
-});
+        document.getElementById("overlay").classList.add("hidden");
+        document.getElementById("app").classList.remove("hidden");
 
-// Handle form submission
-authForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const accessCode = document.getElementById('access-code').value.trim();
-  const accessCodes = JSON.parse(localStorage.getItem('accessCodes')) || [];
-
-  if (isRegister) {
-    const fullName = document.getElementById('full-name').value.trim();
-    const email = document.getElementById('email').value.trim();
-
-    if (!fullName || !email || !accessCode) {
-      alert('Please fill all fields!');
-      return;
-    }
-
-    const newCode = { code: accessCode, validity: 30 };
-    accessCodes.push(newCode);
-    localStorage.setItem('accessCodes', JSON.stringify(accessCodes));
-    alert('Registration successful! Please log in.');
-    isRegister = false;
-    registerFields.style.display = 'none';
-    authTitle.textContent = 'Sign In';
-  } else {
-    const validCode = accessCodes.find((item) => item.code === accessCode);
-    if (validCode) {
-      const daysSinceGenerated = (Date.now() - new Date(validCode.generatedDate || Date.now())) / (1000 * 60 * 60 * 24);
-      if (daysSinceGenerated <= validCode.validity) {
-        alert('Login successful!');
-        localStorage.setItem('lastLogin', new Date());
-        authOverlay.style.display = 'none';
-      } else {
-        alert('Access code expired. Please register for a new code.');
-      }
+        // Auto-hide user details after 10 seconds
+        setTimeout(() => {
+            document.getElementById("app").classList.add("hidden");
+        }, 10000);
     } else {
-      alert('Invalid access code!');
+        alert("Invalid User ID or Details Not Found. Please Re-register.");
+        showRegister();
     }
-  }
-});
+}
 
-checkLoginStatus();
+// ** Register New User Function **
+function register() {
+    const name = document.getElementById("regName").value.trim();
+    const department = document.getElementById("regDepartment").value.trim();
+    const level = document.getElementById("regLevel").value.trim();
+    const courses = document.getElementById("regCourses").value.trim();
+
+    if (!name || !department || !level || !courses) {
+        alert("All fields are required!");
+        return;
+    }
+
+    if (confirm("Registration costs N1500. Proceed?")) {
+        const userId = `user${Math.floor(1000 + Math.random() * 9000)}`;
+        users[userId] = {
+            fullName: name,
+            department,
+            level,
+            courses,
+            createdAt: new Date().toISOString(),
+            isActive: false
+        };
+
+        localStorage.setItem("users", JSON.stringify(users));
+
+        // Send details to WhatsApp
+        const message = `New Registration:\nName: ${name}\nDepartment: ${department}\nLevel: ${level}\nCourses: ${courses}\nGenerated User ID: ${userId}`;
+        window.open(`https://wa.me/2349155127634?text=${encodeURIComponent(message)}`);
+
+        alert(`Registration successful! Your User ID is ${userId} (Pending Activation).`);
+        showLogin();
+    }
+}
+
+// ** Cross-Check IDs with Admin Panel **
+function crossCheckUser() {
+    const userId = document.getElementById("checkUserId").value.trim();
+
+    if (users[userId]) {
+        if (reservedAdminIDs.includes(userId)) {
+            users[userId].isActive = true;
+            localStorage.setItem("users", JSON.stringify(users));
+            alert(`User ID ${userId} matched and activated.`);
+        } else {
+            alert("User ID not found in the Admin Panel!");
+        }
+    } else {
+        alert("User ID not registered! Please re-register.");
+        showRegister();
+    }
+}
+
+// ** Admin Panel Functions **
+function activateUser() {
+    const userId = document.getElementById("activateUserId").value.trim();
+    if (users[userId]) {
+        users[userId].isActive = true;
+        localStorage.setItem("users", JSON.stringify(users));
+        alert(`User ID ${userId} has been activated!`);
+    } else {
+        alert("User ID not found!");
+    }
+}
+
+function updateExpirationDays() {
+    const days = document.getElementById("expirationDays").value;
+    if (days > 0) {
+        expirationDays = days;
+        localStorage.setItem("expirationDays", expirationDays);
+        alert(`Expiration days updated to ${expirationDays} days.`);
+    } else {
+        alert("Please enter a valid number!");
+    }
+}
+
+// ** Navigation Functions **
+function showRegister() {
+    document.getElementById("login-box").classList.add("hidden");
+    document.getElementById("register-box").classList.remove("hidden");
+}
+
+function showLogin() {
+    document.getElementById("register-box").classList.add("hidden");
+    document.getElementById("admin-box").classList.add("hidden");
+    document.getElementById("login-box").classList.remove("hidden");
+}
+
