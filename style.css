@@ -638,7 +638,6 @@ button:hover {
   text-decoration: underline;
   }
 
-
 /* Reset some basics */
 * {
   margin: 0;
@@ -651,7 +650,7 @@ button:hover {
   font-family: 'Poppins', sans-serif;
   padding: 20px;
   text-align: center;
-  }
+}
 
 /* Fullscreen overlay */
 #overlay {
@@ -660,16 +659,16 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0.4, 0.5, 1);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000; /* Ensure it sits above all other content */
 }
 
-/* Glassy container */
+/* Shared styles for login, register, and welcome sections */
 #login-box, #register-box, #welcome-popup {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   border-radius: 12px;
   padding: 30px 40px;
@@ -679,34 +678,35 @@ button:hover {
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-h2 {
+/* Login Section Styles */
+#login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login-box h2 {
   font-size: 24px;
   margin-bottom: 20px;
   color: white;
 }
 
-.student-details {
-  font-size: 10px;
-  align-items: margin;
-  color: white;
-  }
-
-input {
+#login-box input {
   width: 100%;
   margin: 10px 0;
   padding: 10px;
   font-size: 16px;
   border: none;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   color: white;
 }
 
-input::placeholder {
+#login-box input::placeholder {
   color: #ddd;
 }
 
-button {
+#login-box button {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
@@ -720,11 +720,73 @@ button {
   transition: all 0.3s ease;
 }
 
-button:hover {
+#login-box button:hover {
   background: linear-gradient(135deg, #a777e3, #6e8efb);
 }
 
-/* Profile Picture */
+/* Registration Section Styles */
+#register-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#register-box h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+#register-box input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+#register-box input::placeholder {
+  color: #ddd;
+}
+
+#register-box button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#register-box button:hover {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+}
+
+/* Welcome Popup Section Styles */
+#welcome-popup {
+  text-align: center;
+}
+
+#welcome-popup h2 {
+  font-size: 26px;
+  color: white;
+}
+
+#student-details {
+  margin-top: 20px;
+  font-size: 16px;
+  color: white;
+  line-height: 1.8;
+}
+
 .profile-container {
   display: flex;
   justify-content: center;
@@ -739,12 +801,11 @@ button:hover {
   border: 2px solid white;
 }
 
-/* Hide elements */
-.hidden {
-  display: none;
+/* Buttons */
+button {
+  cursor: pointer;
 }
 
-/* Back to Login button */
 .back-btn {
   background: transparent;
   color: white;
@@ -759,38 +820,7 @@ button:hover {
   color: #6e8efb;
 }
 
-  #student-details, #agree-checkbox {
-    margin-top: 20px;
-    line-height: 1.8;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-/*To make the "Don't have an account" text bolder*/
-#login-box p {
-  font-weight: bold;
-}
-/*To make the checkbox label larger and bolder*/
-#register-box label {
-  font-size: 18px;
-  font-weight: bold;
-  display: block; /*This ensures the label is on its own line*/
-  margin-bottom: 10px; /*Adds some space below the label*/
-}
-
-/*To change the color of the checkbox*/
-#agree-checkbox {
-  accent-color: #2980b9; /*Example: a blue color*/
-}
-
-/*To change the color of the registration fee*/
-#register-box strong {
-  color: #e74c3c; /*Example: a darker red*/
-    }
-
-/* Animation */
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -800,4 +830,9 @@ button:hover {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Miscellaneous styling for consistency */
+.hidden {
+  display: none;
 }
