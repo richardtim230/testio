@@ -638,46 +638,53 @@ button:hover {
   text-decoration: underline;
   }
 
-  /* Reset basics */
+
+  /* Reset some basics */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Fullscreen Overlay */
+/* Main application (no styling effect) */
+#app {
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Fullscreen overlay */
 #overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1000; /* Ensure it sits above all other content */
 }
 
-/* Login, Register, and Welcome Boxes */
+/* Glassy container */
 #login-box, #register-box, #welcome-popup {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(15px);
   border-radius: 12px;
   padding: 30px 40px;
   text-align: center;
   width: 350px;
+  animation: fadeIn 0.7s ease-in-out;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-  display: none; /* Hidden by default */
 }
 
-#login-box.active,
-#register-box.active,
-#welcome-popup.active {
-  display: block; /* Only show active section */
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: white;
 }
 
-/* Inputs and Buttons */
 input {
   width: 100%;
   margin: 10px 0;
@@ -685,7 +692,7 @@ input {
   font-size: 16px;
   border: none;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   color: white;
 }
 
@@ -711,30 +718,7 @@ button:hover {
   background: linear-gradient(135deg, #a777e3, #6e8efb);
 }
 
-/* Headings */
-h2 {
-  font-size: 24px;
-  color: white;
-  margin-bottom: 20px;
-}
-
-/* Paragraphs */
-p {
-  font-size: 14px;
-  color: white;
-  margin-top: 10px;
-}
-
-/* Labels */
-label {
-  font-size: 14px;
-  color: white;
-  display: block;
-  margin-top: 15px;
-  text-align: left;
-}
-
-/* Profile Photo */
+/* Profile Picture */
 .profile-container {
   display: flex;
   justify-content: center;
@@ -749,19 +733,54 @@ label {
   border: 2px solid white;
 }
 
-/* Main Application */
-#app {
-  font-family: 'Poppins', sans-serif;
-  padding: 20px;
-  text-align: center;
-  display: none; /* Hidden until login is successful */
+/* Hide elements */
+.hidden {
+  display: none;
 }
 
-#app.visible {
+/* Back to Login button */
+.back-btn {
+  background: transparent;
+  color: white;
+  margin-top: 5px;
+  border: 2px solid white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: white;
+  color: #6e8efb;
+}
+/* Paragraph text for general use */
+p {
+  font-size: 14px;
+  color: white;
+  margin-top: 10px;
+}
+
+/* Checkbox label for agreement */
+label {
+  font-size: 14px;
+  color: white;
   display: block;
+  margin-top: 15px;
+  text-align: left;
+  cursor: pointer;
 }
 
-/* Animations */
+/* Styling for the agreement terms link inside label (if needed) */
+label a {
+  color: #6e8efb;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+label a:hover {
+  color: #a777e3;
+}
+
+/* Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -771,20 +790,4 @@ label {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Back Button */
-.back-btn {
-  background: transparent;
-  color: white;
-  margin-top: 10px;
-  border: 2px solid white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.back-btn:hover {
-  background: white;
-  color: #6e8efb;
 }
