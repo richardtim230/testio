@@ -640,7 +640,7 @@ button:hover {
 
 
 /* Reset some basics */
-• {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -651,7 +651,7 @@ button:hover {
   font-family: 'Poppins', sans-serif;
   padding: 20px;
   text-align: center;
-}
+  }
 
 /* Fullscreen overlay */
 #overlay {
@@ -679,16 +679,6 @@ button:hover {
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/*Initially only show the login box*/
-#login-box {
-  display: block;
-}
-
-#register-box, #welcome-popup {
-  display: none; /* Hide initially */
-}
-
-
 h2 {
   font-size: 24px;
   margin-bottom: 20px;
@@ -696,10 +686,10 @@ h2 {
 }
 
 .student-details {
-  font-size: 16px; /* Increased font size for better readability */
+  font-size: 10px;
+  align-items: margin;
   color: white;
-  text-align: left; /* Align details to the left */
-}
+  }
 
 input {
   width: 100%;
@@ -769,10 +759,36 @@ button:hover {
   color: #6e8efb;
 }
 
-#student-details {
-  margin-top: 20px;
-  line-height: 1.8;
+  #student-details, #agree-checkbox {
+    margin-top: 20px;
+    line-height: 1.8;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
+/*To make the "Don't have an account" text bolder*/
+#login-box p {
+  font-weight: bold;
+}
+/*To make the checkbox label larger and bolder*/
+#register-box label {
+  font-size: 18px;
+  font-weight: bold;
+  display: block; /*This ensures the label is on its own line*/
+  margin-bottom: 10px; /*Adds some space below the label*/
+}
+
+/*To change the color of the checkbox*/
+#agree-checkbox {
+  accent-color: #2980b9; /*Example: a blue color*/
+}
+
+/*To change the color of the registration fee*/
+#register-box strong {
+  color: #e74c3c; /*Example: a darker red*/
+    }
 
 /* Animation */
 @keyframes fadeIn {
