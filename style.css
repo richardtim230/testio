@@ -759,7 +759,7 @@ button:hover {
   color: #6e8efb;
 }
 
-  #student-details {
+  #student-details, #agree-checkbox {
     margin-top: 20px;
     line-height: 1.8;
     font-family: 'Poppins', sans-serif;
