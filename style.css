@@ -660,7 +660,7 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -761,12 +761,13 @@ p {
 
 /* Checkbox label for agreement */
 label {
-  font-size: 14px;
+  font-size: 10px;
   color: white;
   display: block;
   margin-top: 15px;
   text-align: left;
   cursor: pointer;
+  font-weight: bold;
 }
 
 /* Styling for the agreement terms link inside label (if needed) */
