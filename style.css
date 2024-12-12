@@ -638,21 +638,14 @@ button:hover {
   text-decoration: underline;
   }
 
-/* Reset some basics */
+  /* Reset basics */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Main application (no styling effect) */
-#app {
-  font-family: 'Poppins', sans-serif;
-  padding: 20px;
-  text-align: center;
-}
-
-/* Fullscreen overlay */
+/* Fullscreen Overlay */
 #overlay {
   position: fixed;
   top: 0;
@@ -663,10 +656,10 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure it sits above all other content */
+  z-index: 1000;
 }
 
-/* Shared styles for login, register, and welcome sections */
+/* Login, Register, and Welcome Boxes */
 #login-box, #register-box, #welcome-popup {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
@@ -674,24 +667,18 @@ button:hover {
   padding: 30px 40px;
   text-align: center;
   width: 350px;
-  animation: fadeIn 0.7s ease-in-out;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  display: none; /* Hidden by default */
 }
 
-/* Login Section Styles */
-#login-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#login-box.active,
+#register-box.active,
+#welcome-popup.active {
+  display: block; /* Only show active section */
 }
 
-#login-box h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: white;
-}
-
-#login-box input {
+/* Inputs and Buttons */
+input {
   width: 100%;
   margin: 10px 0;
   padding: 10px;
@@ -702,11 +689,11 @@ button:hover {
   color: white;
 }
 
-#login-box input::placeholder {
+input::placeholder {
   color: #ddd;
 }
 
-#login-box button {
+button {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
@@ -720,73 +707,34 @@ button:hover {
   transition: all 0.3s ease;
 }
 
-#login-box button:hover {
+button:hover {
   background: linear-gradient(135deg, #a777e3, #6e8efb);
 }
 
-/* Registration Section Styles */
-#register-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#register-box h2 {
+/* Headings */
+h2 {
   font-size: 24px;
+  color: white;
   margin-bottom: 20px;
+}
+
+/* Paragraphs */
+p {
+  font-size: 14px;
   color: white;
-}
-
-#register-box input {
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-#register-box input::placeholder {
-  color: #ddd;
-}
-
-#register-box button {
-  width: 100%;
-  padding: 12px;
   margin-top: 10px;
-  background: linear-gradient(135deg, #ff7eb3, #ff758c);
-  border: none;
-  border-radius: 6px;
+}
+
+/* Labels */
+label {
+  font-size: 14px;
   color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  display: block;
+  margin-top: 15px;
+  text-align: left;
 }
 
-#register-box button:hover {
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
-}
-
-/* Welcome Popup Section Styles */
-#welcome-popup {
-  text-align: center;
-}
-
-#welcome-popup h2 {
-  font-size: 26px;
-  color: white;
-}
-
-#student-details {
-  margin-top: 20px;
-  font-size: 16px;
-  color: white;
-  line-height: 1.8;
-}
-
+/* Profile Photo */
 .profile-container {
   display: flex;
   justify-content: center;
@@ -801,23 +749,16 @@ button:hover {
   border: 2px solid white;
 }
 
-/* Buttons */
-button {
-  cursor: pointer;
+/* Main Application */
+#app {
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  text-align: center;
+  display: none; /* Hidden until login is successful */
 }
 
-.back-btn {
-  background: transparent;
-  color: white;
-  margin-top: 5px;
-  border: 2px solid white;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.back-btn:hover {
-  background: white;
-  color: #6e8efb;
+#app.visible {
+  display: block;
 }
 
 /* Animations */
@@ -832,7 +773,18 @@ button {
   }
 }
 
-/* Miscellaneous styling for consistency */
-.hidden {
-  display: none;
+/* Back Button */
+.back-btn {
+  background: transparent;
+  color: white;
+  margin-top: 10px;
+  border: 2px solid white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: white;
+  color: #6e8efb;
 }
